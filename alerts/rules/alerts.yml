@@ -1,0 +1,65 @@
+groups:
+- name: database alerts
+  rules:
+  - alert: ClusterDown
+    expr: min(redis_cluster_state) == 0
+    for: 1m
+    labels:
+      severity: page
+    annotations:
+      summary: Redis cluster is down
+      description: Redis cluster state is {{ $value }}
+
+  - alert: InstanceDown
+    expr: redis_up == 0
+    for: 1m
+    labels:
+      severity: page
+    annotations:
+      summary: Redis instance is down
+      description: Redis instance {{ $labels.instance }} is down
+
+  - alert: ShardConnectionCount
+    expr: redis_connected_clients > 500
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: Shards - Excessive Connection Count
+      description: Shard {{ $labels.instance }} exceeded 500 connections for 5 minutes
+
+  - alert: ReplicaSync
+    expr: bdb_replicaof_syncer_status != 0
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: Replication - Resynchronization Requests (Status)
+      description: Replication on {{ $labels.instance }} not synchronized in 10 minutes
+
+  - alert: CRDTSync
+    expr: bdb_crdt_syncer_status > 0
+    for: 5m
+    labels:
+      severity: warning
+    annotations:
+      summary: Replication - Unsynchronized (CRDT)
+      description: CRDT Replication on {{ $labels.instance }} not synchronized for 5 minutes
+
+  - alert: ReplicaLag
+    expr: bdb_replicaof_syncer_local_ingress_lag_time > 500
+    for: 10m
+    labels:
+      severity: warning
+    annotations:
+      summary: Replication - High Latency (Status)
+      description: Replication Latency {{ $labels.instance }} exceeded 500ms for 10 minutes
+
+  - alert: CRDTLag
+    expr: bdb_crdt_syncer_local_ingress_lag_time > 500
+    for: 10m
+    labels:
+      severity: warning
+    annotations:
+      summary: Replication - High Latency (CRDT)
+      description: CRDT Replication Latency on {{ $labels.instance }} exceeded 500ms for 10 minutes
