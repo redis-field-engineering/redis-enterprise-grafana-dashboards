@@ -55,7 +55,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -118,7 +118,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "count (bdb_conns{cluster=\"$cluster\"})",
           "format": "time_series",
@@ -136,7 +136,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -199,7 +199,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "count(redis_connected_clients{cluster=\"$cluster\"})",
           "format": "time_series",
@@ -215,7 +215,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -278,7 +278,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "count(node_up{cluster=\"$cluster\"})",
           "format": "time_series",
@@ -294,7 +294,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -373,7 +373,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "count(ALERTS{cluster=\"$cluster\", alertstate=\"firing\"})",
           "format": "time_series",
@@ -390,7 +390,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -404,7 +404,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -419,7 +419,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "editable": true,
       "error": false,
@@ -479,7 +479,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(redis_used_memory{cluster=\"$cluster\"})",
           "format": "time_series",
@@ -491,7 +491,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(node_available_memory{cluster=\"$cluster\"})",
           "format": "time_series",
@@ -504,7 +504,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(node_provisional_memory{cluster=\"$cluster\"})",
           "format": "time_series",
@@ -516,7 +516,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(node_provisional_memory_no_overbooking{cluster=\"$cluster\"})",
           "format": "time_series",
@@ -567,7 +567,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "editable": true,
       "error": false,
@@ -616,7 +616,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(delta(bdb_used_memory{cluster=\"$cluster\"}[1m])) by (bdb) > 100 * 1024*1024",
           "format": "time_series",
@@ -662,7 +662,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -676,7 +676,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -691,7 +691,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 5,
       "fillGradient": 0,
@@ -736,7 +736,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "editorMode": "code",
           "expr": "redis_used_memory{cluster=\"$cluster\", node=\"$node\"} * on(bdb) group_left(bdb_name) bdb_up{}",
@@ -783,7 +783,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -797,7 +797,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -812,7 +812,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "editable": true,
       "error": false,
@@ -858,7 +858,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "editorMode": "code",
           "expr": "100 - node_cpu_idle{cluster=\"$cluster\", node=\"$node\"}*100",
@@ -909,7 +909,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -923,7 +923,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -938,7 +938,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -982,7 +982,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "editorMode": "code",
           "expr": "topk(10, listener_total_req{} * on(bdb) group_left(bdb_name) bdb_up{})",
@@ -1033,7 +1033,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "editable": true,
       "error": false,
@@ -1084,7 +1084,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "editorMode": "code",
           "expr": "topk(10, sum(bdb_total_req{} * on(bdb) group_left(bdb_name) bdb_up{}) by (bdb) > 0)",
@@ -1133,7 +1133,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -1147,7 +1147,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -1162,7 +1162,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 5,
       "fillGradient": 0,
@@ -1206,7 +1206,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "editorMode": "code",
           "expr": "topk(10, bdb_conns{} * on(bdb) group_left(bdb_name) bdb_up{})",
@@ -1221,7 +1221,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "editorMode": "code",
           "expr": "topk(10, listener_conns{} * on(bdb) group_left(bdb_name) bdb_up{})",
@@ -1270,7 +1270,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 0,
       "fillGradient": 0,
@@ -1314,7 +1314,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "editorMode": "code",
           "expr": "topk(10, bdb_avg_latency{} * on(bdb) group_left(bdb_name) bdb_up{} )",
@@ -1361,7 +1361,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -1375,7 +1375,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -1398,7 +1398,7 @@
       ],
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "filterNull": false,
       "fontSize": "100%",
@@ -1441,7 +1441,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "editorMode": "code",
           "expr": "bdb_used_memory{} * on(bdb) group_left(bdb_name) bdb_up{}",
@@ -1463,7 +1463,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 5,
       "fillGradient": 0,
@@ -1507,7 +1507,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "editorMode": "code",
           "expr": "bdb_used_memory{} * on(bdb) group_left(bdb_name) bdb_up{} > 30 * 1024 * 1024",
@@ -1567,7 +1567,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "H1UYMOTVz"
+          "uid": "feGGxtJVz"
         },
         "definition": "",
         "hide": 0,
@@ -1596,7 +1596,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "H1UYMOTVz"
+          "uid": "feGGxtJVz"
         },
         "definition": "",
         "hide": 0,
@@ -1623,7 +1623,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "H1UYMOTVz"
+          "uid": "feGGxtJVz"
         },
         "definition": "bdb_up{cluster=\"$cluster\"}",
         "hide": 2,

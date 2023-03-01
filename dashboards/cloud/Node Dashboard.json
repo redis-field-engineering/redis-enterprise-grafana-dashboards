@@ -43,7 +43,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -57,7 +57,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -68,7 +68,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -131,7 +131,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "count(count(redis_used_memory{cluster=\"$cluster\", node=\"$node\"}) by (bdb))",
           "format": "time_series",
@@ -149,7 +149,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -212,7 +212,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "count(redis_used_memory{cluster=\"$cluster\", node=\"$node\", role=\"master\"})",
           "format": "time_series",
@@ -230,7 +230,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -293,7 +293,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "count(redis_used_memory{cluster=\"$cluster\", node=\"$node\", role=\"slave\"})",
           "format": "time_series",
@@ -311,7 +311,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -379,7 +379,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "node_cpu_system{node=\"$node\",cluster=\"$cluster\"} + node_cpu_user{node=\"$node\",cluster=\"$cluster\"}",
           "format": "time_series",
@@ -396,7 +396,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -459,7 +459,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "node_available_memory{cluster=\"$cluster\",node=\"$node\"}",
           "format": "time_series",
@@ -474,7 +474,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 5,
@@ -498,7 +498,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -510,7 +510,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -524,7 +524,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -539,7 +539,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "decimals": 2,
       "fill": 6,
@@ -596,7 +596,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": " node_cpu_user{cluster=\"$cluster\", node=\"$node\"} + node_cpu_system{cluster=\"$cluster\", node=\"$node\"}",
           "format": "time_series",
@@ -609,7 +609,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "1- node_cpu_idle{cluster=\"$cluster\", node=\"$node\"} - node_cpu_system{cluster=\"$cluster\", node=\"$node\"} - node_cpu_user{cluster=\"$cluster\", node=\"$node\"} unless node_cpu_nice{cluster=\"$cluster\", node=\"$node\"}",
           "format": "time_series",
@@ -622,7 +622,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "node_cpu_steal{cluster=\"$cluster\", node=\"$node\"}",
           "format": "time_series",
@@ -634,7 +634,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "node_cpu_nice{cluster=\"$cluster\", node=\"$node\"}",
           "format": "time_series",
@@ -646,7 +646,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "node_cpu_irqs{cluster=\"$cluster\", node=\"$node\"}",
           "format": "time_series",
@@ -659,7 +659,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "dmcproxy_process_cpu_usage_percent{cluster=\"$cluster\", node=\"$node\"}/100",
           "format": "time_series",
@@ -672,7 +672,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": " node_cpu_iowait{cluster=\"$cluster\", node=\"$node\"}",
           "format": "time_series",
@@ -685,7 +685,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(redis_process_cpu_usage_percent{cluster=\"$cluster\", node=\"$node\"}/100)",
           "format": "time_series",
@@ -733,7 +733,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -747,7 +747,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -762,7 +762,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "description": "display the egress and ingress traffic on the node's NIC",
       "fill": 1,
@@ -812,7 +812,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "node_ingress_bytes{cluster=\"$cluster\", node=\"$node\"}",
           "format": "time_series",
@@ -826,7 +826,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "node_egress_bytes{cluster=\"$cluster\", node=\"$node\"}",
           "format": "time_series",
@@ -879,7 +879,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "description": "display the egress and ingress traffic on the node's NIC",
       "fill": 1,
@@ -929,7 +929,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "node_total_req{cluster=\"$cluster\", node=\"$node\"}",
           "format": "time_series",
@@ -979,7 +979,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -993,7 +993,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -1008,7 +1008,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1058,7 +1058,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "topk(10, listener_egress_bytes{node=\"$node\", cluster=\"$cluster\"})",
           "format": "time_series",
@@ -1070,7 +1070,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "topk(10, listener_ingress_bytes{node=\"$node\", cluster=\"$cluster\"})",
           "format": "time_series",
@@ -1117,7 +1117,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1168,7 +1168,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "topk(5, listener_acc_latency{node=\"$node\", cluster=\"$cluster\"} / listener_total_started_res{node=\"$node\", cluster=\"$cluster\"})",
           "format": "time_series",
@@ -1214,7 +1214,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -1228,7 +1228,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -1243,7 +1243,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1288,7 +1288,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "topk(10, listener_conns{cluster=\"$cluster\", node=\"$node\"})",
           "format": "time_series",
@@ -1339,7 +1339,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1384,7 +1384,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "topk(10, listener_total_req{cluster=\"$cluster\", node=\"$node\"})",
           "format": "time_series",
@@ -1432,7 +1432,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -1446,7 +1446,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -1461,7 +1461,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1506,7 +1506,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "topk(10, redis_used_ram{cluster=\"$cluster\", node=\"$node\"} or redis_used_memory{cluster=\"$cluster\", node=\"$node\"})",
           "format": "time_series",
@@ -1520,7 +1520,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "dmcproxy_process_resident_memory_bytes{cluster=\"$cluster\", node=\"$node\"}",
           "format": "time_series",
@@ -1570,7 +1570,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1614,7 +1614,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "redis_used_memory{cluster=\"$cluster\", node=\"$node\"}",
           "format": "time_series",
@@ -1659,7 +1659,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -1673,7 +1673,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -1688,7 +1688,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1732,7 +1732,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "count(redis_used_memory{cluster=\"$cluster\", node=\"$node\"}) by (bdb)",
           "format": "time_series",
@@ -1779,7 +1779,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1822,7 +1822,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "node_available_memory{cluster=\"$cluster\",node=\"$node\"}",
           "format": "time_series",
@@ -1872,7 +1872,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1915,7 +1915,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(redis_used_memory{cluster=\"$cluster\", node=\"$node\"})",
           "format": "time_series",
@@ -1929,7 +1929,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(redis_used_ram{cluster=\"$cluster\", node=\"$node\"})",
           "format": "time_series",
@@ -1980,7 +1980,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2044,7 +2044,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "avg(redis_allocator_active{node=\"$node\",cluster=\"$cluster\"} / redis_allocator_allocated{node=\"$node\",cluster=\"$cluster\"}) - 1",
           "format": "time_series",
@@ -2059,7 +2059,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "avg(redis_allocator_resident{node=\"$node\",cluster=\"$cluster\"} / redis_allocator_active{node=\"$node\",cluster=\"$cluster\"}) - 1",
           "format": "time_series",
@@ -2074,7 +2074,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(redis_allocator_active{node=\"$node\",cluster=\"$cluster\"} - redis_allocator_allocated{node=\"$node\",cluster=\"$cluster\"})",
           "format": "time_series",
@@ -2089,7 +2089,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(redis_allocator_resident{node=\"$node\",cluster=\"$cluster\"} - redis_allocator_active{node=\"$node\",cluster=\"$cluster\"})",
           "format": "time_series",
@@ -2104,7 +2104,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "avg(redis_active_defrag_running{node=\"$node\",cluster=\"$cluster\"})/100",
           "format": "time_series",
@@ -2117,7 +2117,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(redis_process_resident_memory_bytes{node=\"$node\",cluster=\"$cluster\"}) - sum(redis_allocator_resident{node=\"$node\",cluster=\"$cluster\"})",
           "format": "time_series",
@@ -2132,7 +2132,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(redis_process_resident_memory_bytes{node=\"$node\",cluster=\"$cluster\"}) / sum(redis_allocator_resident{node=\"$node\",cluster=\"$cluster\"})",
           "format": "time_series",
@@ -2180,7 +2180,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -2194,7 +2194,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -2209,7 +2209,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2253,7 +2253,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "(delta(redis_process_cpu_system_seconds_total{node=\"$node\",cluster=\"$cluster\"}[60s]) + delta(redis_process_cpu_user_seconds_total{node=\"$node\",cluster=\"$cluster\"}[60s]))/60*100",
           "format": "time_series",
@@ -2300,7 +2300,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2341,7 +2341,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "rate(dmcproxy_process_cpu_user_seconds_total{cluster=\"$cluster\", node=\"$node\"}[$aggregation])",
           "format": "time_series",
@@ -2354,7 +2354,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "rate(dmcproxy_process_cpu_system_seconds_total{cluster=\"$cluster\", node=\"$node\"}[$aggregation])",
           "format": "time_series",
@@ -2403,7 +2403,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 5,
       "fillGradient": 0,
@@ -2446,7 +2446,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "redis_rdb_bgsave_in_progress{cluster=\"$cluster\", node=\"$node\"} !=0",
           "format": "time_series",
@@ -2460,7 +2460,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "redis_aof_rewrite_in_progress{cluster=\"$cluster\", node=\"$node\"}!=0",
           "format": "time_series",
@@ -2511,7 +2511,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 6,
       "fillGradient": 0,
@@ -2563,7 +2563,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "redis_rdb_last_cow_size{node=\"$node\",cluster=\"$cluster\"}",
           "format": "time_series",
@@ -2577,7 +2577,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "redis_aof_last_cow_size{node=\"$node\",cluster=\"$cluster\"}",
           "format": "time_series",
@@ -2591,7 +2591,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "redis_mem_aof_buffer{node=\"$node\",cluster=\"$cluster\"}",
           "format": "time_series",
@@ -2603,7 +2603,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "redis_mem_clients_slaves{node=\"$node\",cluster=\"$cluster\"}",
           "format": "time_series",
@@ -2651,7 +2651,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 5,
       "fillGradient": 0,
@@ -2694,7 +2694,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "delta(redis_aof_rewrites{cluster=\"$cluster\", node=\"$node\"}[$aggregation]) !=0",
           "format": "time_series",
@@ -2744,7 +2744,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 6,
       "fillGradient": 0,
@@ -2787,7 +2787,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(delta(redis_aof_delayed_fsync{node=\"$node\",cluster=\"$cluster\"}[$aggregation]))",
           "format": "time_series",
@@ -2833,7 +2833,7 @@
       "collapsed": true,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -2850,7 +2850,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -2886,7 +2886,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "node_flash_write_throughput{cluster=\"$cluster\", node=\"$node\"}",
               "format": "time_series",
@@ -2898,7 +2898,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "node_flash_read_throughput{cluster=\"$cluster\", node=\"$node\"}",
               "format": "time_series",
@@ -2941,7 +2941,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -2977,7 +2977,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "node_flash_read_iops{cluster=\"$cluster\", node=\"$node\"}",
               "format": "time_series",
@@ -2990,7 +2990,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "node_flash_write_iops{cluster=\"$cluster\", node=\"$node\"}",
               "format": "time_series",
@@ -3033,7 +3033,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -3069,7 +3069,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "node_flash_write_time{cluster=\"$cluster\", node=\"$node\"} / 1000",
               "format": "time_series",
@@ -3082,7 +3082,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": " node_flash_read_time {cluster=\"$cluster\", node=\"$node\"} / 1000",
               "format": "time_series",
@@ -3125,7 +3125,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -3161,7 +3161,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "node_bigstore_kv_ops{cluster=\"$cluster\", node=\"$node\"}",
               "format": "time_series",
@@ -3205,7 +3205,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -3241,7 +3241,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "sum(redis_used_disk{cluster=\"$cluster\", node=\"$node\"})",
               "format": "time_series",
@@ -3254,7 +3254,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "sum(redis_disk_allocation{cluster=\"$cluster\", node=\"$node\"})",
               "format": "time_series",
@@ -3267,7 +3267,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "node_bigstore_free{cluster=\"$cluster\", node=\"$node\"}",
               "format": "time_series",
@@ -3310,7 +3310,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -3334,7 +3334,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "H1UYMOTVz"
+          "uid": "feGGxtJVz"
         },
         "definition": "",
         "hide": 0,
@@ -3363,7 +3363,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "H1UYMOTVz"
+          "uid": "feGGxtJVz"
         },
         "definition": "",
         "hide": 0,
@@ -3392,7 +3392,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "H1UYMOTVz"
+          "uid": "feGGxtJVz"
         },
         "definition": "",
         "hide": 2,

@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 27,
+  "id": 19,
   "links": [
     {
       "icon": "external link",
@@ -40,20 +40,35 @@
   "liveNow": false,
   "panels": [
     {
+      "collapsed": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feGGxtJVz"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 72,
-      "title": "$bdb : shard $shard : Summary",
+      "id": 59,
+      "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "refId": "A"
+        }
+      ],
+      "title": "$bdb: Summary",
       "type": "row"
     },
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "editable": true,
       "error": false,
@@ -82,7 +97,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -93,89 +108,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "rgb(31, 120, 193)",
-            "mode": "fixed"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 4,
-        "y": 1
-      },
-      "id": 5,
-      "links": [],
-      "maxDataPoints": 100,
-      "options": {
-        "colorMode": "none",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "textMode": "auto"
-      },
-      "pluginVersion": "9.3.2",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "editorMode": "code",
-          "expr": "scalar(redis_process_cpu_usage_percent{bdb=\"$bdb\", cluster=\"$cluster\", redis=\"$shard\"})",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "",
-          "range": true,
-          "refId": "A",
-          "step": 14400
-        }
-      ],
-      "title": "CPU Usage",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -214,7 +147,7 @@
       "gridPos": {
         "h": 4,
         "w": 4,
-        "x": 8,
+        "x": 4,
         "y": 1
       },
       "id": 4,
@@ -239,10 +172,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "editorMode": "code",
-          "expr": "scalar(redis_used_memory{bdb=\"$bdb\", cluster=\"$cluster\", redis=\"$shard\"})",
+          "expr": "scalar(bdb_used_memory{bdb=\"$bdb\", cluster=\"$cluster\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -257,25 +190,11 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fieldConfig": {
         "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "min": 0,
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -289,24 +208,24 @@
               }
             ]
           },
-          "unit": "none"
+          "unit": "short"
         },
         "overrides": []
       },
       "gridPos": {
         "h": 4,
         "w": 4,
-        "x": 12,
+        "x": 8,
         "y": 1
       },
-      "id": 7,
+      "id": 5,
       "links": [],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "none",
+        "colorMode": "value",
         "graphMode": "none",
         "justifyMode": "auto",
-        "orientation": "horizontal",
+        "orientation": "auto",
         "reduceOptions": {
           "calcs": [
             "lastNotNull"
@@ -321,10 +240,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "editorMode": "code",
-          "expr": "count(redis_db0_keys{bdb=\"$bdb\", cluster=\"$cluster\", redis=\"$shard\"})",
+          "expr": "scalar(bdb_no_of_keys{bdb=\"$bdb\", cluster=\"$cluster\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -339,7 +258,75 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 1
+      },
+      "id": 6,
+      "links": [],
+      "maxDataPoints": 100,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "textMode": "auto"
+      },
+      "pluginVersion": "9.3.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "editorMode": "code",
+          "expr": "scalar(bdb_conns{bdb=\"$bdb\", cluster=\"$cluster\"})",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "",
+          "range": true,
+          "refId": "A",
+          "step": 14400
+        }
+      ],
+      "title": "Connection Count",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feGGxtJVz"
       },
       "fieldConfig": {
         "defaults": {
@@ -367,7 +354,7 @@
         "x": 16,
         "y": 1
       },
-      "id": 6,
+      "id": 7,
       "links": [],
       "maxDataPoints": 100,
       "options": {
@@ -389,51 +376,37 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
-          "editorMode": "code",
-          "expr": "scalar(redis_connected_clients{bdb=\"$bdb\", cluster=\"$cluster\", redis=\"$shard\"})",
+          "expr": "count(listener_total_req{bdb=\"$bdb\", cluster=\"$cluster\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
-          "range": true,
           "refId": "A",
           "step": 14400
         }
       ],
-      "title": "Connection Count",
+      "title": "Listener Count",
       "type": "stat"
     },
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fieldConfig": {
         "defaults": {
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "color": "dark-red",
-                  "index": 1,
-                  "text": "Off"
-                },
-                "1": {
-                  "color": "dark-green",
-                  "index": 0,
-                  "text": "On"
-                }
-              },
-              "type": "value"
-            }
-          ],
+          "mappings": [],
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           },
@@ -469,10 +442,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "editorMode": "code",
-          "expr": "count(redis_forwarding_state{cluster=\"$cluster\", bdb=\"$bdb\", redis=\"$shard\"})",
+          "expr": "count(redis_used_memory{cluster=\"$cluster\", bdb=\"$bdb\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "",
@@ -481,14 +454,14 @@
           "step": 14400
         }
       ],
-      "title": "Forwarding",
+      "title": "Shard Count",
       "type": "stat"
     },
     {
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -496,18 +469,18 @@
         "x": 0,
         "y": 5
       },
-      "id": 59,
+      "id": 60,
       "panels": [],
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
       ],
-      "title": "$bdb : shard $shard : Memory",
+      "title": "$bdb: Performance",
       "type": "row"
     },
     {
@@ -517,19 +490,13 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "decbytes"
-        },
-        "overrides": []
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
+        "w": 8,
         "x": 0,
         "y": 6
       },
@@ -542,7 +509,7 @@
         "max": true,
         "min": true,
         "show": true,
-        "sort": "max",
+        "sort": "current",
         "sortDesc": true,
         "total": false,
         "values": true
@@ -561,7 +528,6 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "$$hashKey": "object:278",
           "alias": "/.*max.*/",
           "dashes": true,
           "fill": 0
@@ -574,23 +540,76 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
-          "editorMode": "code",
-          "expr": "redis_maxmemory{cluster=\"$cluster\", bdb=\"$bdb\", redis=\"$shard\"}",
+          "expr": "bdb_avg_latency{bdb=\"$bdb\", cluster=\"$cluster\"}",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
-          "legendFormat": "shard {{redis}}",
+          "legendFormat": "bdb_avg_latency",
           "metric": "",
-          "range": true,
           "refId": "A",
           "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "bdb_avg_write_latency{bdb=\"$bdb\", cluster=\"$cluster\"}",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "bdb_avg_write_latency",
+          "metric": "",
+          "refId": "B",
+          "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "bdb_avg_read_latency{bdb=\"$bdb\", cluster=\"$cluster\"}",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "bdb_avg_read_latency",
+          "metric": "",
+          "refId": "C",
+          "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "bdb_avg_other_latency{bdb=\"$bdb\", cluster=\"$cluster\"}",
+          "format": "time_series",
+          "hide": false,
+          "intervalFactor": 2,
+          "legendFormat": "bdb_avg_other_latency",
+          "metric": "",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "max_over_time(bdb_avg_latency_max{bdb=\"$bdb\", cluster=\"$cluster\"}[$aggregation])",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "bdb_avg_latency (max over $aggregation)",
+          "refId": "E",
+          "step": 1200
         }
       ],
       "thresholds": [],
       "timeRegions": [],
-      "title": "Max Memory",
+      "title": "Average Latency",
       "tooltip": {
         "msResolution": false,
         "shared": true,
@@ -605,7 +624,7 @@
       },
       "yaxes": [
         {
-          "format": "decbytes",
+          "format": "s",
           "logBase": 1,
           "show": true
         },
@@ -626,348 +645,15 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "decbytes"
-        },
-        "overrides": []
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
-        "x": 6,
+        "w": 8,
+        "x": 8,
         "y": 6
-      },
-      "hiddenSeries": false,
-      "id": 67,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "sort": "max",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "$$hashKey": "object:278",
-          "alias": "/.*max.*/",
-          "dashes": true,
-          "fill": 0
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "editorMode": "code",
-          "expr": "redis_allocator_allocated{cluster=\"$cluster\", bdb=\"$bdb\", redis=\"$shard\"}",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 2,
-          "legendFormat": "shard {{redis}}",
-          "metric": "",
-          "range": true,
-          "refId": "A",
-          "step": 2400
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "Allocated Memory",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "decbytes",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 12,
-        "y": 6
-      },
-      "hiddenSeries": false,
-      "id": 68,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "sort": "max",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "$$hashKey": "object:278",
-          "alias": "/.*max.*/",
-          "dashes": true,
-          "fill": 0
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "editorMode": "code",
-          "expr": "redis_allocator_allocated{cluster=\"$cluster\", bdb=\"$bdb\", redis=\"$shard\"}",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 2,
-          "legendFormat": "shard {{redis}}",
-          "metric": "",
-          "range": true,
-          "refId": "A",
-          "step": 2400
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "Resident Memory",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "decbytes",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 18,
-        "y": 6
-      },
-      "hiddenSeries": false,
-      "id": 69,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "sort": "max",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "$$hashKey": "object:278",
-          "alias": "/.*max.*/",
-          "dashes": true,
-          "fill": 0
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "editorMode": "code",
-          "expr": "redis_allocator_allocated{cluster=\"$cluster\", bdb=\"$bdb\", redis=\"$shard\"}",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 2,
-          "legendFormat": "shard {{redis}}",
-          "metric": "",
-          "range": true,
-          "refId": "A",
-          "step": 2400
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "Process Memory",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "decbytes",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 0,
-        "y": 13
       },
       "hiddenSeries": false,
       "id": 55,
@@ -1009,24 +695,22 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
-          "editorMode": "code",
-          "expr": "redis_mem_fragmentation_ratio{bdb=\"$bdb\", cluster=\"$cluster\", redis=\"$shard\"}",
+          "expr": "listener_acc_latency{bdb=~\"$bdb.*\", cluster=\"$cluster\"} / listener_total_started_res{bdb=~\"$bdb.*\", cluster=\"$cluster\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "shard {{redis}}",
+          "legendFormat": "listener {{proxy}}  node {{node}}",
           "metric": "",
-          "range": true,
           "refId": "A",
           "step": 2400
         }
       ],
       "thresholds": [],
       "timeRegions": [],
-      "title": "Fragmentation Ratio",
+      "title": "Average Listener Latency",
       "tooltip": {
         "msResolution": false,
         "shared": true,
@@ -1041,7 +725,7 @@
       },
       "yaxes": [
         {
-          "format": "none",
+          "format": "s",
           "logBase": 1,
           "show": true
         },
@@ -1062,645 +746,27 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "decmbytes"
-        },
-        "overrides": []
-      },
+      "description": "",
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 7,
-        "w": 6,
-        "x": 6,
-        "y": 13
-      },
-      "hiddenSeries": false,
-      "id": 65,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "sort": "current",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "/.*max.*/",
-          "dashes": true,
-          "fill": 0
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "editorMode": "code",
-          "expr": "redis_mem_aof_buffer{bdb=\"$bdb\", cluster=\"$cluster\", redis=\"$shard\"}",
-          "format": "time_series",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "shard {{redis}}",
-          "metric": "",
-          "range": true,
-          "refId": "A",
-          "step": 2400
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "AOF Buffer",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "decmbytes",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 12,
-        "y": 13
-      },
-      "hiddenSeries": false,
-      "id": 66,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "sort": "current",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "alias": "/.*max.*/",
-          "dashes": true,
-          "fill": 0
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "editorMode": "code",
-          "expr": "redis_mem_not_counted_for_evict{cluster=\"$cluster\", bdb=\"$bdb\", redis=\"$shard\"}",
-          "format": "time_series",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "shard {{redis}}",
-          "metric": "",
-          "range": true,
-          "refId": "A",
-          "step": 2400
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "Memory less Eviction",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "decbytes",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "unit": "decbytes"
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 7,
-        "w": 6,
-        "x": 18,
-        "y": 13
-      },
-      "hiddenSeries": false,
-      "id": 70,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "sort": "max",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [
-        {
-          "$$hashKey": "object:278",
-          "alias": "/.*max.*/",
-          "dashes": true,
-          "fill": 0
-        }
-      ],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "editorMode": "code",
-          "expr": "redis_mem_replication_backlog{bdb=\"$bdb\", cluster=\"$cluster\", redis=\"$shard\"}",
-          "format": "time_series",
-          "hide": false,
-          "intervalFactor": 2,
-          "legendFormat": "shard {{redis}}",
-          "metric": "",
-          "range": true,
-          "refId": "A",
-          "step": 2400
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "Replication Backlog",
-      "tooltip": {
-        "msResolution": false,
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "decbytes",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "collapsed": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 20
-      },
-      "id": 60,
-      "panels": [],
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "refId": "A"
-        }
-      ],
-      "title": "$bdb : shard $shard : CPU",
-      "type": "row"
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 9,
         "w": 8,
-        "x": 0,
-        "y": 21
+        "x": 16,
+        "y": 6
       },
       "hiddenSeries": false,
-      "id": 43,
+      "id": 44,
       "legend": {
-        "alignAsTable": false,
+        "alignAsTable": true,
         "avg": false,
-        "current": false,
-        "max": false,
+        "current": true,
+        "max": true,
         "min": false,
         "show": true,
         "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "expr": "bdb_main_thread_cpu_system{bdb=\"$bdb\",cluster=\"$cluster\"} + bdb_main_thread_cpu_user{bdb=\"$bdb\",cluster=\"$cluster\"}",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "main threads (masters)",
-          "metric": "",
-          "refId": "A",
-          "step": 2400
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "expr": "bdb_shard_cpu_system{bdb=\"$bdb\",cluster=\"$cluster\"} + bdb_shard_cpu_user{bdb=\"$bdb\",cluster=\"$cluster\"}",
-          "format": "time_series",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "all threads (masters)",
-          "refId": "B",
-          "step": 2400
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "expr": "bdb_fork_cpu_system{bdb=\"$bdb\",cluster=\"$cluster\"} + bdb_fork_cpu_user{bdb=\"$bdb\",cluster=\"$cluster\"}",
-          "format": "time_series",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "all forks (masters)",
-          "refId": "C",
-          "step": 2400
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "expr": "bdb_main_thread_cpu_system_max{bdb=\"$bdb\",cluster=\"$cluster\"} + bdb_main_thread_cpu_user_max{bdb=\"$bdb\",cluster=\"$cluster\"}",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "main threads max (masters)",
-          "refId": "D",
-          "step": 2400
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "expr": "bdb_shard_cpu_system_max{bdb=\"$bdb\",cluster=\"$cluster\"} + bdb_shard_cpu_user_max{bdb=\"$bdb\",cluster=\"$cluster\"}",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "all threads max (masters)",
-          "refId": "E",
-          "step": 2400
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "expr": "sum((delta(redis_process_main_thread_cpu_system_seconds_total{bdb=\"$bdb\",role=\"slave\", cluster=\"$cluster\"}[60s]) + delta(redis_process_main_thread_cpu_user_seconds_total{bdb=\"$bdb\",role=\"slave\", cluster=\"$cluster\"}[60s]))/60)",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "Slave main threads",
-          "refId": "F",
-          "step": 2400
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "expr": "sum((delta(redis_process_cpu_system_seconds_total{bdb=\"$bdb\",role=\"slave\",cluster=\"$cluster\"}[60s]) + delta(redis_process_cpu_user_seconds_total{bdb=\"$bdb\",role=\"slave\",cluster=\"$cluster\"}[60s]))/60)",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "Slave all threads",
-          "refId": "G",
-          "step": 2400
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "CPU Utilization",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "percentunit",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 9,
-        "w": 8,
-        "x": 8,
-        "y": 21
-      },
-      "hiddenSeries": false,
-      "id": 13,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "sort": "current",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "editorMode": "code",
-          "expr": "(delta(redis_process_cpu_system_seconds_total{bdb=\"$bdb\",cluster=\"$cluster\"}[60s]) + delta(redis_process_cpu_user_seconds_total{bdb=\"$bdb\",cluster=\"$cluster\"}[60s]))/60*100 or redis_cpu_percent{bdb=\"$bdb\", cluster=\"$cluster\"}",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "shard: {{redis}}, role: {{role}}, node:{{node}}, slots:{{slots}}",
-          "range": true,
-          "refId": "B",
-          "step": 2400
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "CPU Usage per Shard",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "percent",
-          "logBase": 1,
-          "min": "0",
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 9,
-        "w": 8,
-        "x": 16,
-        "y": 21
-      },
-      "hiddenSeries": false,
-      "id": 53,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": false,
-        "show": true,
-        "sort": "current",
-        "sortDesc": true,
-        "total": false,
         "values": true
       },
       "lines": true,
@@ -1717,7 +783,7 @@
       "renderer": "flot",
       "seriesOverrides": [
         {
-          "alias": "/.*maxmemory.*/",
+          "alias": "/.*limit.*/",
           "dashes": true,
           "fill": 0
         }
@@ -1729,42 +795,36 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
-          "editorMode": "code",
-          "expr": "redis_used_memory{bdb=\"$bdb\",cluster=\"$cluster\"}",
+          "expr": "bdb_used_memory{bdb=\"$bdb\", cluster=\"$cluster\"}",
           "format": "time_series",
-          "hide": false,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "shard:{{redis}}, role:{{role}}, node:{{node}}, slots:{{slots}}",
-          "metric": "redis_used_memory",
-          "range": true,
+          "legendFormat": "used_memory",
+          "metric": "",
           "refId": "A",
           "step": 2400
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
-          "editorMode": "code",
-          "expr": "redis_maxmemory{bdb=\"$bdb\",cluster=\"$cluster\"}",
+          "expr": "bdb_memory_limit{bdb=\"$bdb\", cluster=\"$cluster\"} < bdb_used_memory{bdb=\"$bdb\", cluster=\"$cluster\"} * 1.5",
           "format": "time_series",
-          "hide": true,
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "maxmemory: shard:{{redis}}, bdb:{{bdb}},  role:{{role}}, node:{{node}}",
-          "metric": "redis_used_memory",
-          "range": true,
+          "legendFormat": "limit (when low, near used)",
           "refId": "B",
-          "step": 240
+          "step": 2400
         }
       ],
       "thresholds": [],
       "timeRegions": [],
-      "title": "Size of Shards",
+      "title": "Memory Usage",
       "tooltip": {
+        "msResolution": false,
         "shared": true,
         "sort": 0,
         "value_type": "individual"
@@ -1784,7 +844,7 @@
         {
           "format": "short",
           "logBase": 1,
-          "show": false
+          "show": true
         }
       ],
       "yaxis": {
@@ -1795,13 +855,13 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 30
+        "y": 13
       },
       "id": 61,
       "panels": [],
@@ -1809,12 +869,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
       ],
-      "title": "$bdb : shard $shard : Network",
+      "title": "$bdb: Network",
       "type": "row"
     },
     {
@@ -1824,7 +884,13 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none"
+        },
+        "overrides": []
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1832,7 +898,7 @@
         "h": 9,
         "w": 8,
         "x": 0,
-        "y": 31
+        "y": 14
       },
       "hiddenSeries": false,
       "id": 10,
@@ -1868,17 +934,28 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
-          "editorMode": "code",
-          "expr": "redis_total_connections_received{bdb=\"$bdb\", cluster=\"$cluster\", redis=\"$shard\"}",
+          "expr": "bdb_conns{bdb=\"$bdb\", cluster=\"$cluster\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "Total",
           "metric": "",
-          "range": true,
           "refId": "A",
+          "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "listener_conns{bdb=\"$bdb\", cluster=\"$cluster\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "endpoint {{proxy}} node: {{node}}",
+          "metric": "",
+          "refId": "B",
           "step": 2400
         }
       ],
@@ -1921,7 +998,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -1929,7 +1006,7 @@
         "h": 9,
         "w": 8,
         "x": 8,
-        "y": 31
+        "y": 14
       },
       "hiddenSeries": false,
       "id": 14,
@@ -1971,7 +1048,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "bdb_total_req{cluster=\"$cluster\",bdb=\"$bdb\"}",
           "format": "time_series",
@@ -1983,7 +1060,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "bdb_other_req{cluster=\"$cluster\",bdb=\"$bdb\"}",
           "format": "time_series",
@@ -1995,7 +1072,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "bdb_read_req{cluster=\"$cluster\",bdb=\"$bdb\"}",
           "format": "time_series",
@@ -2007,7 +1084,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "bdb_write_req{cluster=\"$cluster\",bdb=\"$bdb\"}",
           "format": "time_series",
@@ -2019,7 +1096,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "bdb_total_req_max{cluster=\"$cluster\",bdb=\"$bdb\"}",
           "format": "time_series",
@@ -2033,7 +1110,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "max_over_time(bdb_total_req_max{cluster=\"$cluster\",bdb=\"$bdb\"}[$aggregation])\n",
           "format": "time_series",
@@ -2082,7 +1159,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2090,7 +1167,7 @@
         "h": 9,
         "w": 8,
         "x": 16,
-        "y": 31
+        "y": 14
       },
       "hiddenSeries": false,
       "id": 16,
@@ -2131,19 +1208,21 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
+          "editorMode": "code",
           "expr": "bdb_egress_bytes{bdb=\"$bdb\",cluster=\"$cluster\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Egress",
+          "range": true,
           "refId": "A",
           "step": 2400
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "bdb_ingress_bytes{bdb=\"$bdb\",cluster=\"$cluster\"}",
           "format": "time_series",
@@ -2186,16 +1265,399 @@
       }
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feGGxtJVz"
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 0,
+        "y": 23
+      },
+      "hiddenSeries": false,
+      "id": 43,
+      "legend": {
+        "alignAsTable": false,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "9.3.2",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "editorMode": "code",
+          "expr": "bdb_main_thread_cpu_system{bdb=\"$bdb\",cluster=\"$cluster\"} + bdb_main_thread_cpu_user{bdb=\"$bdb\",cluster=\"$cluster\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "main threads (masters)",
+          "metric": "",
+          "range": true,
+          "refId": "A",
+          "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "bdb_shard_cpu_system{bdb=\"$bdb\",cluster=\"$cluster\"} + bdb_shard_cpu_user{bdb=\"$bdb\",cluster=\"$cluster\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "all threads (masters)",
+          "refId": "B",
+          "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "bdb_fork_cpu_system{bdb=\"$bdb\",cluster=\"$cluster\"} + bdb_fork_cpu_user{bdb=\"$bdb\",cluster=\"$cluster\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "all forks (masters)",
+          "refId": "C",
+          "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "bdb_main_thread_cpu_system_max{bdb=\"$bdb\",cluster=\"$cluster\"} + bdb_main_thread_cpu_user_max{bdb=\"$bdb\",cluster=\"$cluster\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "main threads max (masters)",
+          "refId": "D",
+          "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "bdb_shard_cpu_system_max{bdb=\"$bdb\",cluster=\"$cluster\"} + bdb_shard_cpu_user_max{bdb=\"$bdb\",cluster=\"$cluster\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "all threads max (masters)",
+          "refId": "E",
+          "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "sum((delta(redis_process_main_thread_cpu_system_seconds_total{bdb=\"$bdb\",role=\"slave\", cluster=\"$cluster\"}[60s]) + delta(redis_process_main_thread_cpu_user_seconds_total{bdb=\"$bdb\",role=\"slave\", cluster=\"$cluster\"}[60s]))/60)",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Slave main threads",
+          "refId": "F",
+          "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "sum((delta(redis_process_cpu_system_seconds_total{bdb=\"$bdb\",role=\"slave\",cluster=\"$cluster\"}[60s]) + delta(redis_process_cpu_user_seconds_total{bdb=\"$bdb\",role=\"slave\",cluster=\"$cluster\"}[60s]))/60)",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "Slave all threads",
+          "refId": "G",
+          "step": 2400
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "CPU Utilization",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "logBase": 1,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feGGxtJVz"
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 8,
+        "y": 23
+      },
+      "hiddenSeries": false,
+      "id": 13,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "9.3.2",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "(delta(redis_process_cpu_system_seconds_total{bdb=\"$bdb\",cluster=\"$cluster\"}[60s]) + delta(redis_process_cpu_user_seconds_total{bdb=\"$bdb\",cluster=\"$cluster\"}[60s]))/60*100 or redis_cpu_percent{bdb=\"$bdb\", cluster=\"$cluster\"}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "shard: {{redis}} role: {{role}} node:{{node}}, slots:{{slots}}",
+          "refId": "B",
+          "step": 2400
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "CPU Usage per Shard",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percent",
+          "logBase": 1,
+          "min": "0",
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feGGxtJVz"
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 16,
+        "y": 23
+      },
+      "hiddenSeries": false,
+      "id": 53,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "9.3.2",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [
+        {
+          "alias": "/.*maxmemory.*/",
+          "dashes": true,
+          "fill": 0
+        }
+      ],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "editorMode": "code",
+          "expr": "redis_used_memory{bdb=\"$bdb\",cluster=\"$cluster\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "shard:{{redis}}, role:{{role}}, node:{{node}}, slots:{{slots}}",
+          "metric": "redis_used_memory",
+          "range": true,
+          "refId": "A",
+          "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "editorMode": "code",
+          "expr": "redis_maxmemory{bdb=\"$bdb\",cluster=\"$cluster\"}",
+          "format": "time_series",
+          "hide": true,
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "maxmemory: shard:{{redis}}, bdb:{{bdb}},  role:{{role}}, node:{{node}}",
+          "metric": "redis_used_memory",
+          "range": true,
+          "refId": "B",
+          "step": 240
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "Size of Shards",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "bytes",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 40
+        "y": 32
       },
       "id": 62,
       "panels": [],
@@ -2203,12 +1665,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
       ],
-      "title": "$bdb : shard $shard : Keys",
+      "title": "$bdb: Database",
       "type": "row"
     },
     {
@@ -2218,7 +1680,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2226,7 +1688,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 41
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 17,
@@ -2265,16 +1727,14 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
-          "editorMode": "code",
-          "expr": "redis_no_of_keys{cluster=\"$cluster\", bdb=\"$bdb\"} or redis_db0_keys{cluster=\"$cluster\", bdb=\"$bdb\"}",
+          "expr": "redis_no_of_keys{bdb=\"$bdb\", cluster=\"$cluster\"} or redis_db0_keys{bdb=\"$bdb\", cluster=\"$cluster\"}",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "shard:{{redis}}, role: {{role}}, node:{{node}}, slots:{{slots}}",
+          "legendFormat": "redis:{{redis}}, role: {{role}}, node:{{node}}, slots:{{slots}}",
           "metric": "",
-          "range": true,
           "refId": "A",
           "step": 2400
         }
@@ -2317,7 +1777,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2325,7 +1785,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 41
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 11,
@@ -2363,37 +1823,33 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
-          "editorMode": "code",
-          "expr": "bdb_no_of_keys{cluster=\"$cluster\", bdb=\"$bdb\"}",
+          "expr": "bdb_no_of_keys{bdb=\"$bdb\", cluster=\"$cluster\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "num of keys",
           "metric": "",
-          "range": true,
           "refId": "A",
           "step": 2400
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
-          "editorMode": "code",
-          "expr": "sum(redis_db0_expires{cluster=\"$cluster\", bdb=\"$bdb\", role=\"master\"})",
+          "expr": "sum(redis_db0_expires{bdb=\"$bdb\", cluster=\"$cluster\",role=\"master\"})",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
           "legendFormat": "num of volatile keys",
-          "range": true,
           "refId": "B",
           "step": 2400
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(max(redis_bigdb0_ram{bdb=\"$bdb\", cluster=\"$cluster\",role=\"master\"} or redis_bigdb_ram{bdb=\"$bdb\", cluster=\"$cluster\",role=\"master\"}) by (redis,bdb,cluster))",
           "format": "time_series",
@@ -2406,7 +1862,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(max(redis_bigdb0_disk{bdb=\"$bdb\", cluster=\"$cluster\",role=\"master\"} or redis_bigdb_disk{bdb=\"$bdb\", cluster=\"$cluster\",role=\"master\"}) by (redis,bdb,cluster))",
           "format": "time_series",
@@ -2419,7 +1875,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "(sum(max(redis_bigdb0_disk{bdb=\"$bdb\", cluster=\"$cluster\",role=\"master\"} or redis_bigdb_disk{bdb=\"$bdb\", cluster=\"$cluster\",role=\"master\"}) by (redis,bdb,cluster)) + sum(max(redis_bigdb0_ram{bdb=\"$bdb\", cluster=\"$cluster\",role=\"master\"} or redis_bigdb_ram{bdb=\"$bdb\", cluster=\"$cluster\",role=\"master\"}) by (redis,bdb,cluster))) - sum(redis_db0_keys{bdb=\"$bdb\", cluster=\"$cluster\",role=\"master\"})",
           "format": "time_series",
@@ -2432,7 +1888,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(max(redis_bigdb0_dirty{bdb=\"$bdb\", cluster=\"$cluster\",role=\"master\"} or redis_bigdb_dirty{bdb=\"$bdb\", cluster=\"$cluster\",role=\"master\"}) by (redis,bdb,cluster))",
           "format": "time_series",
@@ -2445,7 +1901,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(max(redis_bigdb0_clean{bdb=\"$bdb\", cluster=\"$cluster\",role=\"master\"} or redis_bigdb_clean{bdb=\"$bdb\", cluster=\"$cluster\",role=\"master\"}) by (redis,bdb,cluster))",
           "format": "time_series",
@@ -2494,7 +1950,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2502,7 +1958,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 41
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 20,
@@ -2538,13 +1994,14 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "editorMode": "code",
           "expr": "bdb_evicted_objects{bdb=\"$bdb\", cluster=\"$cluster\"} * on(bdb) group_left(bdb_name) bdb_up{}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "database:{{bdb_name}}",
+          "legendFormat": "database: {{bdb_name}}",
           "metric": "",
           "range": true,
           "refId": "A",
@@ -2589,7 +2046,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -2597,7 +2054,7 @@
         "h": 6,
         "w": 6,
         "x": 18,
-        "y": 41
+        "y": 33
       },
       "hiddenSeries": false,
       "id": 21,
@@ -2633,15 +2090,13 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
-          "editorMode": "code",
-          "expr": "bdb_expired_objects{cluster=\"$cluster\", bdb=\"$bdb\"}",
+          "expr": "bdb_expired_objects{bdb=\"$bdb\", cluster=\"$cluster\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "database:$bdb",
           "metric": "",
-          "range": true,
           "refId": "A",
           "step": 2400
         }
@@ -2681,13 +2136,13 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 47
+        "y": 39
       },
       "id": 63,
       "panels": [],
@@ -2695,43 +2150,43 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
       ],
-      "title": "$bdb : shard $shard : Cache",
+      "title": "$bdb: Cache",
       "type": "row"
     },
     {
       "aliasColors": {},
-      "bars": false,
+      "bars": true,
       "dashLength": 10,
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
-      "fill": 1,
+      "fill": 5,
       "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 48
+        "y": 40
       },
       "hiddenSeries": false,
-      "id": 26,
+      "id": 48,
       "legend": {
         "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "rightSide": false,
-        "show": true,
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "rightSide": true,
+        "show": false,
         "total": false,
-        "values": true
+        "values": false
       },
       "lines": true,
       "linewidth": 1,
@@ -2753,20 +2208,19 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
-          "expr": "(bdb_read_hits{bdb=\"$bdb\", cluster=\"$cluster\"} + bdb_write_hits{bdb=\"$bdb\", cluster=\"$cluster\"}) / (bdb_read_req{bdb=\"$bdb\", cluster=\"$cluster\"} + bdb_write_req{bdb=\"$bdb\", cluster=\"$cluster\"}) > 0",
+          "expr": "delta(redis_aof_rewrites{cluster=\"$cluster\", bdb=\"$bdb\"}[$aggregation]) !=0",
           "format": "time_series",
-          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "$bdb: Hit Ratio",
+          "legendFormat": "Redis {{redis}} node {{node}}",
           "refId": "A",
           "step": 2400
         }
       ],
       "thresholds": [],
       "timeRegions": [],
-      "title": "DB Hit Ratio (hits / requests)",
+      "title": "Shard AOF Rewrites / $aggregation",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -2780,14 +2234,15 @@
       },
       "yaxes": [
         {
-          "format": "percentunit",
+          "format": "short",
           "logBase": 1,
+          "min": "0",
           "show": true
         },
         {
           "format": "short",
           "logBase": 1,
-          "show": true
+          "show": false
         }
       ],
       "yaxis": {
@@ -2801,143 +2256,15 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 6,
-        "y": 48
-      },
-      "hiddenSeries": false,
-      "id": 49,
-      "legend": {
-        "alignAsTable": true,
-        "avg": true,
-        "current": true,
-        "max": true,
-        "min": true,
-        "show": true,
-        "sort": "current",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "expr": "bdb_read_misses{cluster=\"$cluster\", bdb=\"$bdb\"}",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "Read Misses",
-          "refId": "A",
-          "step": 2400
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "expr": "bdb_write_misses{cluster=\"$cluster\", bdb=\"$bdb\"}",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "Write Misses",
-          "refId": "B",
-          "step": 2400
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "expr": "bdb_read_hits{cluster=\"$cluster\", bdb=\"$bdb\"}",
-          "format": "time_series",
-          "intervalFactor": 2,
-          "legendFormat": "Read Hits",
-          "refId": "C",
-          "step": 2400
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "expr": "bdb_write_hits{cluster=\"$cluster\", bdb=\"$bdb\"}",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "Write Hits",
-          "refId": "D",
-          "step": 2400
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "Read/Write Misses",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "ops",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 5,
       "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 6,
-        "x": 12,
-        "y": 48
+        "x": 6,
+        "y": 40
       },
       "hiddenSeries": false,
       "id": 57,
@@ -2972,7 +2299,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "redis_rdb_bgsave_in_progress{cluster=\"$cluster\", bdb=\"$bdb\"} !=0",
           "format": "time_series",
@@ -2984,7 +2311,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "redis_aof_rewrite_in_progress{cluster=\"$cluster\", bdb=\"$bdb\"} !=0",
           "format": "time_series",
@@ -3033,7 +2360,135 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 12,
+        "y": 40
+      },
+      "hiddenSeries": false,
+      "id": 49,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "9.3.2",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "bdb_read_misses{cluster=\"$cluster\", bdb=\"$bdb\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Read Misses",
+          "refId": "A",
+          "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "bdb_write_misses{cluster=\"$cluster\", bdb=\"$bdb\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Write Misses",
+          "refId": "B",
+          "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "bdb_read_hits{cluster=\"$cluster\", bdb=\"$bdb\"}",
+          "format": "time_series",
+          "intervalFactor": 2,
+          "legendFormat": "Read Hits",
+          "refId": "C",
+          "step": 2400
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "bdb_write_hits{cluster=\"$cluster\", bdb=\"$bdb\"}",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "Write Hits",
+          "refId": "D",
+          "step": 2400
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "Read/Write Misses",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "ops",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -3041,7 +2496,193 @@
         "h": 6,
         "w": 6,
         "x": 18,
-        "y": 48
+        "y": 40
+      },
+      "hiddenSeries": false,
+      "id": 23,
+      "legend": {
+        "alignAsTable": true,
+        "avg": false,
+        "current": true,
+        "max": false,
+        "min": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "connected",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "9.3.2",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "editorMode": "code",
+          "expr": "redis_fragmentation{bdb=\"$bdb\", cluster=\"$cluster\"} or redis_mem_fragmentation_ratio{bdb=\"$bdb\", cluster=\"$cluster\"} ",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "shard {{redis}} ({{role}})",
+          "metric": "",
+          "range": true,
+          "refId": "A",
+          "step": 2400
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "Shard RSS Fragmentation",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": false
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feGGxtJVz"
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 0,
+        "y": 46
+      },
+      "hiddenSeries": false,
+      "id": 26,
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "9.3.2",
+      "pointradius": 5,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": true,
+      "steppedLine": false,
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "feGGxtJVz"
+          },
+          "expr": "(bdb_read_hits{bdb=\"$bdb\", cluster=\"$cluster\"} + bdb_write_hits{bdb=\"$bdb\", cluster=\"$cluster\"}) / (bdb_read_req{bdb=\"$bdb\", cluster=\"$cluster\"} + bdb_write_req{bdb=\"$bdb\", cluster=\"$cluster\"}) > 0",
+          "format": "time_series",
+          "interval": "",
+          "intervalFactor": 2,
+          "legendFormat": "$bdb: Hit Ratio",
+          "refId": "A",
+          "step": 2400
+        }
+      ],
+      "thresholds": [],
+      "timeRegions": [],
+      "title": "Hit Ratio (hits / requests)",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "mode": "time",
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "percentunit",
+          "logBase": 1,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false
+      }
+    },
+    {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "feGGxtJVz"
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 6,
+        "y": 46
       },
       "hiddenSeries": false,
       "id": 47,
@@ -3075,7 +2716,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "bdb_replicaof_syncer_local_ingress_lag_time{bdb=\"$bdb\", cluster=\"$cluster\"}",
           "format": "time_series",
@@ -3089,7 +2730,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "bdb_crdt_syncer_local_ingress_lag_time{bdb=\"$bdb\", cluster=\"$cluster\"}",
           "format": "time_series",
@@ -3138,15 +2779,15 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 6,
-        "x": 0,
-        "y": 54
+        "x": 12,
+        "y": 46
       },
       "hiddenSeries": false,
       "id": 34,
@@ -3180,7 +2821,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(redis_mem_fragmentation_ratio{bdb=\"$bdb\",cluster=\"$cluster\"}) / count(redis_mem_fragmentation_ratio{bdb=\"$bdb\",cluster=\"$cluster\"})",
           "format": "time_series",
@@ -3193,7 +2834,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(redis_allocator_active{bdb=\"$bdb\",cluster=\"$cluster\"}) / sum(redis_allocator_allocated{bdb=\"$bdb\",cluster=\"$cluster\"})",
           "format": "time_series",
@@ -3205,7 +2846,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "sum(redis_allocator_resident{bdb=\"$bdb\",cluster=\"$cluster\"}) / sum(redis_allocator_active{bdb=\"$bdb\",cluster=\"$cluster\"})",
           "format": "time_series",
@@ -3253,197 +2894,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 6,
-        "y": 54
-      },
-      "hiddenSeries": false,
-      "id": 23,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
-        "show": true,
-        "sort": "current",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "connected",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "editorMode": "code",
-          "expr": "redis_fragmentation{cluster=\"$cluster\", bdb=\"$bdb\"} or redis_mem_fragmentation_ratio{cluster=\"$cluster\", bdb=\"$bdb\"} ",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "shard:{{redis}} role:{{role}}",
-          "metric": "",
-          "range": true,
-          "refId": "A",
-          "step": 2400
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "Shard RSS Fragmentation",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "percentunit",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": false
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "H1UYMOTVz"
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 12,
-        "y": 54
-      },
-      "hiddenSeries": false,
-      "id": 58,
-      "legend": {
-        "alignAsTable": true,
-        "avg": false,
-        "current": true,
-        "max": false,
-        "min": false,
-        "show": true,
-        "sort": "current",
-        "sortDesc": true,
-        "total": false,
-        "values": true
-      },
-      "lines": true,
-      "linewidth": 1,
-      "links": [],
-      "nullPointMode": "null",
-      "options": {
-        "alertThreshold": true
-      },
-      "percentage": false,
-      "pluginVersion": "9.3.2",
-      "pointradius": 5,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "H1UYMOTVz"
-          },
-          "editorMode": "code",
-          "expr": "redis_allocator_active{bdb=\"$bdb\",cluster=\"$cluster\"} - redis_allocator_allocated{bdb=\"$bdb\",cluster=\"$cluster\"}",
-          "format": "time_series",
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "shard:{{redis}} role:{{role}}",
-          "metric": "redis_allocator_active",
-          "range": true,
-          "refId": "A",
-          "step": 2400
-        }
-      ],
-      "thresholds": [],
-      "timeRegions": [],
-      "title": "Shard Allocation Fragmentation (#)",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "mode": "time",
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "decbytes",
-          "logBase": 1,
-          "show": true
-        },
-        {
-          "format": "short",
-          "logBase": 1,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": {
-        "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -3451,7 +2902,7 @@
         "h": 6,
         "w": 6,
         "x": 18,
-        "y": 54
+        "y": 46
       },
       "hiddenSeries": false,
       "id": 50,
@@ -3487,7 +2938,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "editorMode": "code",
           "expr": "redis_allocator_active{bdb=\"$bdb\",cluster=\"$cluster\"} / redis_allocator_allocated{bdb=\"$bdb\",cluster=\"$cluster\"}",
@@ -3538,7 +2989,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -3546,7 +2997,7 @@
         "h": 6,
         "w": 6,
         "x": 0,
-        "y": 60
+        "y": 52
       },
       "hiddenSeries": false,
       "id": 30,
@@ -3580,7 +3031,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "expr": "redis_active_defrag_running{cluster=\"$cluster\",bdb=\"$bdb\"}",
           "format": "time_series",
@@ -3628,7 +3079,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -3636,7 +3087,7 @@
         "h": 6,
         "w": 6,
         "x": 6,
-        "y": 60
+        "y": 52
       },
       "hiddenSeries": false,
       "id": 22,
@@ -3670,14 +3121,16 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
+          "editorMode": "code",
           "expr": "delta(redis_aof_delayed_fsync{bdb=\"$bdb\", cluster=\"$cluster\"}[$aggregation])",
           "format": "time_series",
           "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "Redis {{redis}} ({{role}})",
+          "legendFormat": "shard {{redis}} ({{role}})",
           "metric": "redis_aof_delayed_fsync",
+          "range": true,
           "refId": "A",
           "step": 2400
         }
@@ -3714,33 +3167,34 @@
     },
     {
       "aliasColors": {},
-      "bars": true,
+      "bars": false,
       "dashLength": 10,
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
-      "fill": 5,
+      "fill": 1,
       "fillGradient": 0,
       "gridPos": {
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 60
+        "y": 52
       },
       "hiddenSeries": false,
-      "id": 48,
+      "id": 58,
       "legend": {
         "alignAsTable": true,
         "avg": false,
-        "current": false,
+        "current": true,
         "max": false,
         "min": false,
-        "rightSide": true,
-        "show": false,
+        "show": true,
+        "sort": "current",
+        "sortDesc": true,
         "total": false,
-        "values": false
+        "values": true
       },
       "lines": true,
       "linewidth": 1,
@@ -3756,25 +3210,29 @@
       "renderer": "flot",
       "seriesOverrides": [],
       "spaceLength": 10,
-      "stack": true,
+      "stack": false,
       "steppedLine": false,
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
-          "expr": "delta(redis_aof_rewrites{cluster=\"$cluster\", bdb=\"$bdb\"}[$aggregation]) !=0",
+          "editorMode": "code",
+          "expr": "redis_allocator_active{bdb=\"$bdb\",cluster=\"$cluster\"} - redis_allocator_allocated{bdb=\"$bdb\",cluster=\"$cluster\"}",
           "format": "time_series",
+          "interval": "",
           "intervalFactor": 2,
-          "legendFormat": "Redis {{redis}} node {{node}}",
+          "legendFormat": "shard:{{redis}} role:{{role}}",
+          "metric": "redis_allocator_active",
+          "range": true,
           "refId": "A",
           "step": 2400
         }
       ],
       "thresholds": [],
       "timeRegions": [],
-      "title": "Shard AOF Rewrites / $aggregation",
+      "title": "Shard Allocation Fragmentation (#)",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -3788,15 +3246,14 @@
       },
       "yaxes": [
         {
-          "format": "short",
+          "format": "decbytes",
           "logBase": 1,
-          "min": "0",
           "show": true
         },
         {
           "format": "short",
           "logBase": 1,
-          "show": false
+          "show": true
         }
       ],
       "yaxis": {
@@ -3807,13 +3264,13 @@
       "collapsed": true,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 66
+        "y": 58
       },
       "id": 64,
       "panels": [
@@ -3824,7 +3281,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -3866,7 +3323,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_used_ram{bdb=\"$bdb\", cluster=\"$cluster\"}",
               "format": "time_series",
@@ -3880,7 +3337,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_ram_limit{bdb=\"$bdb\", cluster=\"$cluster\"}",
               "format": "time_series",
@@ -3891,7 +3348,7 @@
             }
           ],
           "thresholds": [],
-          "title": "Used Memory(ROF) for $bdb",
+          "title": "BDB (ROF) used RAM for $bdb",
           "tooltip": {
             "msResolution": false,
             "shared": true,
@@ -3924,7 +3381,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -3978,7 +3435,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "(bdb_big_fetch_ram{bdb=\"$bdb\", cluster=\"$cluster\"} + bdb_big_write_ram{bdb=\"$bdb\", cluster=\"$cluster\"} + bdb_big_del_ram{bdb=\"$bdb\", cluster=\"$cluster\"}) / (bdb_big_fetch_flash{bdb=\"$bdb\", cluster=\"$cluster\"} + bdb_big_write_flash{bdb=\"$bdb\", cluster=\"$cluster\"} + bdb_big_del_flash{bdb=\"$bdb\", cluster=\"$cluster\"} + bdb_big_fetch_ram{bdb=\"$bdb\", cluster=\"$cluster\"} + bdb_big_write_ram{bdb=\"$bdb\", cluster=\"$cluster\"} + bdb_big_del_ram{bdb=\"$bdb\", cluster=\"$cluster\"}) > 0",
               "format": "time_series",
@@ -3990,7 +3447,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_big_fetch_ram{bdb=\"$bdb\", cluster=\"$cluster\"}  / (bdb_big_fetch_flash{bdb=\"$bdb\", cluster=\"$cluster\"}  + bdb_big_fetch_ram{bdb=\"$bdb\", cluster=\"$cluster\"} ) > 0",
               "format": "time_series",
@@ -4002,7 +3459,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_big_write_ram{bdb=\"$bdb\", cluster=\"$cluster\"}  / (bdb_big_write_flash{bdb=\"$bdb\", cluster=\"$cluster\"}  + bdb_big_write_ram{bdb=\"$bdb\", cluster=\"$cluster\"} ) > 0",
               "format": "time_series",
@@ -4014,7 +3471,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_big_del_ram{bdb=\"$bdb\", cluster=\"$cluster\"}  / (bdb_big_del_flash{bdb=\"$bdb\", cluster=\"$cluster\"}  + bdb_big_del_ram{bdb=\"$bdb\", cluster=\"$cluster\"} ) > 0",
               "format": "time_series",
@@ -4057,7 +3514,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "description": "Positive is RAM, Negative is Flash",
           "fill": 1,
@@ -4099,7 +3556,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "avg(delta(redis_big_io_ratio_redis{cluster=\"$cluster\",bdb=\"$bdb\",role=\"master\"}[1m]))/60",
               "format": "time_series",
@@ -4111,7 +3568,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "avg(delta(redis_big_io_ratio_flash{cluster=\"$cluster\",bdb=\"$bdb\",role=\"master\"}[1m]) * -1)/60",
               "format": "time_series",
@@ -4124,7 +3581,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "avg(delta(redis_big_user_io_ratio_redis{cluster=\"$cluster\",bdb=\"$bdb\",role=\"master\"}[1m]))/60",
               "format": "time_series",
@@ -4136,7 +3593,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "avg(delta(redis_big_user_io_ratio_flash{cluster=\"$cluster\",bdb=\"$bdb\",role=\"master\"}[1m]) * -1)/60",
               "format": "time_series",
@@ -4180,7 +3637,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "description": "Positive is RAM, Negative is Flash",
           "fill": 1,
@@ -4217,7 +3674,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "delta(redis_big_io_ratio_redis{cluster=\"$cluster\",bdb=\"$bdb\"}[1m])/60",
               "format": "time_series",
@@ -4229,7 +3686,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "delta(redis_big_io_ratio_flash{cluster=\"$cluster\",bdb=\"$bdb\"}[1m]) / -60",
               "format": "time_series",
@@ -4273,7 +3730,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -4310,7 +3767,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_bigstore_io_read_bytes{bdb=\"$bdb\", cluster=\"$cluster\"}",
               "format": "time_series",
@@ -4322,7 +3779,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_bigstore_io_write_bytes{bdb=\"$bdb\", cluster=\"$cluster\"}",
               "format": "time_series",
@@ -4366,7 +3823,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -4403,7 +3860,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_bigstore_io_reads{bdb=\"$bdb\", cluster=\"$cluster\"}",
               "format": "time_series",
@@ -4415,7 +3872,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_bigstore_io_writes{bdb=\"$bdb\", cluster=\"$cluster\"}",
               "format": "time_series",
@@ -4428,7 +3885,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_bigstore_io_dels{bdb=\"$bdb\", cluster=\"$cluster\"}",
               "format": "time_series",
@@ -4471,7 +3928,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -4507,7 +3964,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "sum(delta(redis_wait_busy_key{bdb=\"$bdb\",cluster=\"$cluster\"}[$aggregation]))",
               "format": "time_series",
@@ -4550,7 +4007,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -4586,7 +4043,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "sum(delta(redis_blocking_reads{bdb=\"$bdb\",cluster=\"$cluster\"}[$aggregation]))",
               "format": "time_series",
@@ -4629,7 +4086,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -4670,7 +4127,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_used_bigstore{bdb=\"$bdb\",cluster=\"$cluster\"}",
               "format": "time_series",
@@ -4684,7 +4141,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_used_bigstore{bdb=\"$bdb\",cluster=\"$cluster\"} * bdb_disk_frag_ratio{bdb=\"$bdb\",cluster=\"$cluster\"}",
               "format": "time_series",
@@ -4696,7 +4153,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_disk_frag_ratio{bdb=\"$bdb\",cluster=\"$cluster\"}",
               "format": "time_series",
@@ -4740,7 +4197,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -4776,7 +4233,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_big_postponed_clients{cluster=\"$cluster\",bdb=\"$bdb\"}",
               "format": "time_series",
@@ -4819,7 +4276,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -4856,7 +4313,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_big_blocked_clients{bdb=\"$bdb\",cluster=\"$cluster\"}",
               "format": "time_series",
@@ -4900,7 +4357,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -4947,7 +4404,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_ram_overhead{cluster=\"$cluster\",bdb=\"$bdb\"} ",
               "format": "time_series",
@@ -4960,7 +4417,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_ram_overhead{cluster=\"$cluster\",bdb=\"$bdb\"}  / bdb_ram_limit{cluster=\"$cluster\",bdb=\"$bdb\"}",
               "format": "time_series",
@@ -4973,7 +4430,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "redis_ram_overhead{cluster=\"$cluster\",bdb=\"$bdb\"} / redis_max_ram{cluster=\"$cluster\",bdb=\"$bdb\"}",
               "format": "time_series",
@@ -5020,7 +4477,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -5056,7 +4513,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "sum(rate(redis_blocking_writes{bdb=\"$bdb\",cluster=\"$cluster\"}[1m]))",
               "format": "time_series",
@@ -5099,7 +4556,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -5135,7 +4592,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "sum(redis_big_inst_avg_read_io_queue{bdb=\"$bdb\",cluster=\"$cluster\"})",
               "format": "time_series",
@@ -5178,7 +4635,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -5214,7 +4671,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "sum(redis_big_inst_avg_write_io_queue{bdb=\"$bdb\",cluster=\"$cluster\"})",
               "format": "time_series",
@@ -5257,7 +4714,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -5293,7 +4750,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_bigstore_objs_flash{bdb=\"$bdb\",cluster=\"$cluster\"}",
               "format": "time_series",
@@ -5307,7 +4764,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_bigstore_objs_ram{bdb=\"$bdb\",cluster=\"$cluster\"}",
               "format": "time_series",
@@ -5350,7 +4807,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -5399,7 +4856,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_bigstore_objs_ram{bdb=\"$bdb\",cluster=\"$cluster\"} / bdb_no_of_keys{bdb=\"$bdb\",cluster=\"$cluster\"} ",
               "format": "time_series",
@@ -5414,7 +4871,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "avg((max(redis_bigdb0_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"} or redis_bigdb_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"}) by (redis,bdb,cluster)) / on (redis,bdb,cluster) redis_db0_keys{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"})",
               "format": "time_series",
@@ -5428,7 +4885,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "avg((max(redis_bigdb0_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"} or redis_bigdb_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"}) by (redis,bdb,cluster)) / on (redis,bdb,cluster) redis_db0_keys{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"})",
               "format": "time_series",
@@ -5442,7 +4899,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "topk(1, min((max(redis_bigdb0_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"} or redis_bigdb_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"}) by (redis,bdb,cluster)) / on (redis,bdb,cluster) redis_db0_keys{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"}) by (redis) * -1) *-1",
               "format": "time_series",
@@ -5456,7 +4913,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "topk(1, min((max(redis_bigdb0_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"} or redis_bigdb_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"}) by (redis,bdb,cluster)) / on (redis,bdb,cluster) redis_db0_keys{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"}) by (redis) * -1) *-1",
               "format": "time_series",
@@ -5468,7 +4925,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "min(redis_bigdb0_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"} / redis_bigdb0_keys{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"})",
               "format": "time_series",
@@ -5481,7 +4938,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "min(redis_bigdb0_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"} / redis_bigdb0_keys{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"})",
               "format": "time_series",
@@ -5525,7 +4982,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -5570,7 +5027,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_bigstore_objs_ram{bdb=\"$bdb\",cluster=\"$cluster\"}",
               "format": "time_series",
@@ -5585,7 +5042,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "avg(max(redis_bigdb0_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"} or redis_bigdb_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"}) by (redis,bdb,cluster))",
               "format": "time_series",
@@ -5599,7 +5056,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "avg(max(redis_bigdb0_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"} or redis_bigdb_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"}) by (redis,bdb,cluster))",
               "format": "time_series",
@@ -5613,7 +5070,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "min(max(redis_bigdb0_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"} or redis_bigdb_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"}) by (redis,bdb,cluster))",
               "format": "time_series",
@@ -5627,7 +5084,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "min(max(redis_bigdb0_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"} or redis_bigdb_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"}) by (redis,bdb,cluster))",
               "format": "time_series",
@@ -5641,7 +5098,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "topk(1, min(max(redis_bigdb0_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"} or redis_bigdb_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"}) by (redis,bdb,cluster) < on(cluster,bdb,redis) redis_db0_keys{bdb=\"$bdb\",cluster=\"$cluster\",role=\"slave\"} ) by (bdb, redis) * -1) * -1",
               "format": "time_series",
@@ -5655,7 +5112,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "topk(1, min(max(redis_bigdb0_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"} or redis_bigdb_ram{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"}) by (redis,bdb,cluster) < on(cluster,bdb,redis) redis_db0_keys{bdb=\"$bdb\",cluster=\"$cluster\",role=\"master\"}) by (bdb, redis) * -1) * -1",
               "format": "time_series",
@@ -5700,7 +5157,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -5736,7 +5193,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_big_ram_dirty_evictions{bdb=\"$bdb\",cluster=\"$cluster\"}",
               "format": "time_series",
@@ -5780,7 +5237,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -5816,7 +5273,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "bdb_big_ram_clean_evictions{bdb=\"$bdb\",cluster=\"$cluster\"}",
               "format": "time_series",
@@ -5860,7 +5317,7 @@
           "dashes": false,
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "fill": 1,
           "gridPos": {
@@ -5905,7 +5362,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "sum(delta(redis_rocks_comp_started{bdb=\"$bdb\", cluster=\"$cluster\"}[1m]))",
               "format": "time_series",
@@ -5918,7 +5375,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "sum(delta(redis_rocks_flush_started{bdb=\"$bdb\", cluster=\"$cluster\"}[1m]))",
               "format": "time_series",
@@ -5931,7 +5388,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "sum(delta(redis_rocks_flush_writes_slowdown{bdb=\"$bdb\", cluster=\"$cluster\"}[$aggregation]))",
               "format": "time_series",
@@ -5945,7 +5402,7 @@
             {
               "datasource": {
                 "type": "prometheus",
-                "uid": "H1UYMOTVz"
+                "uid": "feGGxtJVz"
               },
               "expr": "sum(delta(redis_rocks_flush_writes_stop{bdb=\"$bdb\", cluster=\"$cluster\"}[$aggregation]))",
               "format": "time_series",
@@ -5991,16 +5448,16 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
       ],
-      "title": "$bdb : shard $shard : ROF Metrics",
+      "title": "$bdb: ROF Metrics",
       "type": "row"
     }
   ],
-  "refresh": "1m",
+  "refresh": false,
   "schemaVersion": 37,
   "style": "dark",
   "tags": [
@@ -6016,7 +5473,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "H1UYMOTVz"
+          "uid": "feGGxtJVz"
         },
         "definition": "",
         "hide": 0,
@@ -6043,9 +5500,9 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "H1UYMOTVz"
+          "uid": "feGGxtJVz"
         },
-        "definition": "bdb_up{cluster=\"$cluster\"}",
+        "definition": "bdb_conns{cluster=\"$cluster\"}",
         "hide": 0,
         "includeAll": false,
         "label": "database",
@@ -6053,7 +5510,7 @@
         "name": "bdb",
         "options": [],
         "query": {
-          "query": "bdb_up{cluster=\"$cluster\"}",
+          "query": "bdb_conns{cluster=\"$cluster\"}",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -6065,23 +5522,24 @@
       },
       {
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "active",
-          "value": "active"
+          "text": "None",
+          "value": ""
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "H1UYMOTVz"
+          "uid": "feGGxtJVz"
         },
-        "definition": "label_values(redis_up{bdb=\"$bdb\", cluster=\"$cluster\", redis=\"$shard\"}, status)",
+        "definition": "",
         "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "status",
         "options": [],
         "query": {
-          "query": "label_values(redis_up{bdb=\"$bdb\", cluster=\"$cluster\", redis=\"$shard\"}, status)",
-          "refId": "StandardVariableQuery"
+          "query": "label_values(bdb_status{bdb=\"$bdb\", cluster=\"$cluster\"}, status)",
+          "refId": "Redis-Enterprise-status-Variable-Query"
         },
         "refresh": 1,
         "regex": "",
@@ -6098,7 +5556,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "H1UYMOTVz"
+          "uid": "feGGxtJVz"
         },
         "definition": "",
         "hide": 2,
@@ -6118,31 +5576,79 @@
         "useTags": false
       },
       {
+        "auto": true,
+        "auto_count": 100,
+        "auto_min": "1m",
         "current": {
           "selected": false,
-          "text": "1",
-          "value": "1"
+          "text": "auto",
+          "value": "$__auto_interval_aggregation"
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "H1UYMOTVz"
-        },
-        "definition": "label_values(redis_up{cluster=\"$cluster\", bdb=\"$bdb\"}, redis)",
         "hide": 0,
-        "includeAll": false,
-        "label": "shard",
-        "multi": false,
-        "name": "shard",
-        "options": [],
-        "query": {
-          "query": "label_values(redis_up{cluster=\"$cluster\", bdb=\"$bdb\"}, redis)",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
+        "label": "aggregation interval",
+        "name": "aggregation",
+        "options": [
+          {
+            "selected": true,
+            "text": "auto",
+            "value": "$__auto_interval_aggregation"
+          },
+          {
+            "selected": false,
+            "text": "1m",
+            "value": "1m"
+          },
+          {
+            "selected": false,
+            "text": "10m",
+            "value": "10m"
+          },
+          {
+            "selected": false,
+            "text": "30m",
+            "value": "30m"
+          },
+          {
+            "selected": false,
+            "text": "1h",
+            "value": "1h"
+          },
+          {
+            "selected": false,
+            "text": "6h",
+            "value": "6h"
+          },
+          {
+            "selected": false,
+            "text": "12h",
+            "value": "12h"
+          },
+          {
+            "selected": false,
+            "text": "1d",
+            "value": "1d"
+          },
+          {
+            "selected": false,
+            "text": "7d",
+            "value": "7d"
+          },
+          {
+            "selected": false,
+            "text": "14d",
+            "value": "14d"
+          },
+          {
+            "selected": false,
+            "text": "30d",
+            "value": "30d"
+          }
+        ],
+        "query": "1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
+        "queryValue": "",
+        "refresh": 2,
         "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
+        "type": "interval"
       }
     ]
   },
@@ -6176,8 +5682,8 @@
     ]
   },
   "timezone": "utc",
-  "title": "Shard Dashboard",
-  "uid": "OLAsUMAVz",
-  "version": 55,
+  "title": "Database Dashboard",
+  "uid": "Zrko4CoVk",
+  "version": 43,
   "weekStart": ""
 }
