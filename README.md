@@ -55,7 +55,7 @@ navigate to the dashboard files included with the project in the 'dashboards' fo
 
 ## Authors
 
-* *B*John Burke** - *Initial work* - [Redis](https://github.com/redis-field-engineering)
+*John Burke* - *Initial work* - [Redis](https://github.com/redis-field-engineering)
 
 See also the list of [contributors](https://github.com/redis-field-engineering/redis-cloud-dashboards/graphs/contributors) who participated in this 
 project.
