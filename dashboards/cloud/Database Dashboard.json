@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 19,
+  "id": 14,
   "links": [
     {
       "icon": "external link",
@@ -89,7 +89,7 @@
         "content": "<br>\n<center>\n<b style=\"font-size: 20pt\">$newStatus<b>\n</center>",
         "mode": "html"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "style": {
         "font-size": "72pt"
       },
@@ -167,7 +167,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -235,7 +235,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -303,7 +303,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -371,7 +371,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -437,7 +437,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -522,7 +522,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -677,7 +677,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -777,7 +777,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -922,7 +922,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1030,7 +1030,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1191,7 +1191,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -5468,8 +5468,8 @@
       {
         "current": {
           "selected": false,
-          "text": "c23411.us-east4-mz.gcp.cloud.rlrcp.com",
-          "value": "c23411.us-east4-mz.gcp.cloud.rlrcp.com"
+          "text": "j8-redis-field-cluster.local",
+          "value": "j8-redis-field-cluster.local"
         },
         "datasource": {
           "type": "prometheus",
@@ -5495,8 +5495,8 @@
       {
         "current": {
           "selected": false,
-          "text": "j8-redis-field-flexible-database",
-          "value": "11470104"
+          "text": "j8-redis-field-dashboad-demo",
+          "value": "5"
         },
         "datasource": {
           "type": "prometheus",
@@ -5683,7 +5683,7 @@
   },
   "timezone": "utc",
   "title": "Database Dashboard",
-  "uid": "Zrko4CoVk",
-  "version": 43,
+  "uid": "Zrko4CoVK",
+  "version": 1,
   "weekStart": ""
 }

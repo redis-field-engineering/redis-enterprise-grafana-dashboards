@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 25,
+  "id": 13,
   "links": [
     {
       "icon": "external link",
@@ -113,7 +113,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -194,7 +194,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -273,7 +273,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -296,49 +296,6 @@
         "type": "prometheus",
         "uid": "feGGxtJVz"
       },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "text": "None"
-                }
-              },
-              "type": "value"
-            },
-            {
-              "options": {
-                "match": "null",
-                "result": {
-                  "text": "N/A"
-                }
-              },
-              "type": "special"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "rgba(247, 43, 43, 0.9)",
-                "value": null
-              },
-              {
-                "color": "rgba(237, 129, 40, 0.89)"
-              },
-              {
-                "color": "rgba(50, 172, 45, 0.97)"
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
       "gridPos": {
         "h": 4,
         "w": 6,
@@ -355,20 +312,23 @@
       ],
       "maxDataPoints": 100,
       "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "alertInstanceLabelFilter": "",
+        "alertName": "",
+        "dashboardAlerts": false,
+        "groupBy": [],
+        "groupMode": "default",
+        "maxItems": 20,
+        "sortOrder": 1,
+        "stateFilter": {
+          "error": true,
+          "firing": true,
+          "noData": false,
+          "normal": false,
+          "pending": true
         },
-        "textMode": "auto"
+        "viewMode": "stat"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
@@ -384,7 +344,7 @@
         }
       ],
       "title": "Active Alerts",
-      "type": "stat"
+      "type": "alertlist"
     },
     {
       "collapsed": false,
@@ -451,7 +411,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -604,7 +564,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -723,7 +683,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "pointradius": 5,
       "points": false,
       "renderer": "flot",
@@ -1562,8 +1522,8 @@
       {
         "current": {
           "selected": false,
-          "text": "c23411.us-east4-mz.gcp.cloud.rlrcp.com",
-          "value": "c23411.us-east4-mz.gcp.cloud.rlrcp.com"
+          "text": "j8-redis-field-cluster.local",
+          "value": "j8-redis-field-cluster.local"
         },
         "datasource": {
           "type": "prometheus",
@@ -1618,8 +1578,8 @@
       {
         "current": {
           "selected": false,
-          "text": "11470104",
-          "value": "j8-redis-field-flexible-database"
+          "text": "3",
+          "value": "j8-redis-field-dashboard"
         },
         "datasource": {
           "type": "prometheus",
@@ -1675,7 +1635,7 @@
   },
   "timezone": "utc",
   "title": "Cluster Dashboard",
-  "uid": "KOmYOCTVk",
-  "version": 26,
+  "uid": "KOmYOCTVK",
+  "version": 2,
   "weekStart": ""
 }
