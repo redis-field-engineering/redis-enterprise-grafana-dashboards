@@ -1,4 +1,41 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "Prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "9.3.6"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "timeseries",
+      "name": "Time series",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -24,7 +61,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 30,
+  "id": null,
   "links": [
     {
       "icon": "external link",
@@ -53,7 +90,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -111,12 +148,12 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(node_up)",
@@ -134,7 +171,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -192,12 +229,12 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count (bdb_conns)",
@@ -217,7 +254,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -275,12 +312,12 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(redis_connected_clients)",
@@ -298,7 +335,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -372,12 +409,12 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.2",
+      "pluginVersion": "9.3.6",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "expr": "count(ALERTS{alertstate=\"firing\"})",
@@ -408,7 +445,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -485,7 +522,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
           "expr": "count by(cluster) (bdb_total_req)",
@@ -500,7 +537,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -577,7 +614,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
           "expr": "sum by(cluster) (bdb_no_of_keys)",
@@ -605,7 +642,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -682,7 +719,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
           "expr": "sum by(cluster) (bdb_conns)",
@@ -697,7 +734,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -774,7 +811,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
           "expr": "bdb_avg_latency",
@@ -790,7 +827,7 @@
       "collapsed": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "feGGxtJVz"
       },
       "gridPos": {
         "h": 1,
@@ -804,7 +841,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "feGGxtJVz"
           },
           "refId": "A"
         }
@@ -815,7 +852,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -891,7 +928,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
           "expr": "avg by(cluster) (bdb_shard_cpu_system)",
@@ -906,7 +943,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "H1UYMOTVz"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -982,7 +1019,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "H1UYMOTVz"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "builder",
           "expr": "avg by(cluster) (bdb_shard_cpu_user)",
@@ -1036,6 +1073,6 @@
   "timezone": "utc",
   "title": "Summary Dashboard",
   "uid": "Qob28G0Vz",
-  "version": 25,
+  "version": 1,
   "weekStart": ""
 }
