@@ -22,15 +22,24 @@ Grafana
 ### Installing
 
 Once both Prometheus and Grafana have been installed you will need to modify Prometheus' config file and point it at Redis' metrics endpoint. Once 
-that has been done you must create a Prometheus data source in Grafana's administration console. You should name the data source 'Redis-Enterprise'; 
-if you decide to name something else you will need to change the data source names in the individual dashboard JSON files. Please follow the 
-instructions on the following page
+that has been done you must create a Prometheus data source in Grafana's administration console. Please follow the 
+instructions on the following page:
 
 ```
 https://docs.redis.com/latest/rs/clusters/monitoring/prometheus-integration/
 ```
 
-Once this has been done you can use the Grafana administration console to import the files in dashboards/
+Certain information displays require the installation of a third-party plugin, Infinity. Find it here:
+
+```
+https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/
+```
+
+
+Once this has been done you can use the Grafana administration console to import the files in dashboards. The Database Status Dashboard has two panels that need to 
+be configured; Modules, and Configuration. They are both of type 'table' and should use the Infinity datasource with the following parameters; Type: JSON, Parser: 
+Backend, Source: URL, Format: Table, Method: GET, URL: https://<database ip address>:9443/v1/bdbs.
+
 
 ## Running the tests
 
