@@ -303,7 +303,7 @@
           "refId": "A"
         }
       ],
-      "title": "$bdb",
+      "title": "Database: $bdb",
       "type": "row"
     },
     {
@@ -737,7 +737,9 @@
   "refresh": false,
   "schemaVersion": 37,
   "style": "dark",
-  "tags": [],
+  "tags": [
+    "RLEC"
+  ],
   "templating": {
     "list": [
       {
@@ -808,6 +810,29 @@
         "sort": 0,
         "type": "query",
         "useTags": false
+      },
+      {
+        "allValue": ".*",
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${DS_PROMETHEUS}"
+        },
+        "definition": "bdb_up{cluster=\"$cluster\"}",
+        "hide": 1,
+        "includeAll": true,
+        "multi": false,
+        "name": "bdb",
+        "options": [],
+        "query": {
+          "query": "bdb_up{cluster=\"$cluster\"}",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "/bdb=\"(?<value>[^\"]+)|bdb_name=\"(?<text>[^\"]+)/g",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
       },
       {
         "auto": true,
@@ -883,34 +908,11 @@
         "refresh": 2,
         "skipUrlSync": false,
         "type": "interval"
-      },
-      {
-        "allValue": ".*",
-        "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
-        },
-        "definition": "bdb_up{cluster=\"$cluster\"}",
-        "hide": 2,
-        "includeAll": true,
-        "multi": false,
-        "name": "bdb",
-        "options": [],
-        "query": {
-          "query": "bdb_up{cluster=\"$cluster\"}",
-          "refId": "StandardVariableQuery"
-        },
-        "refresh": 1,
-        "regex": "/bdb=\"(?<value>[^\"]+)|bdb_name=\"(?<text>[^\"]+)/g",
-        "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {
@@ -941,6 +943,6 @@
   "timezone": "utc",
   "title": "Subscription Status Dashboard",
   "uid": "UjCh-Ya4k",
-  "version": 100,
+  "version": 104,
   "weekStart": ""
 }
