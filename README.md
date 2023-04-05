@@ -1,4 +1,4 @@
-# Redis Cloud Dashboards
+# Redis Enterprise Dashboards
 
 These dashboards are intended to graphically present standard metrics of every level of a Redis Enterprise installation. Alert configuration files 
 will assist you in providing notifications should any of a number of key values exceed their expected ranges. Lastly, metrics description files 
