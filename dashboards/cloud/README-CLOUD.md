@@ -22,7 +22,6 @@ If you want to to use the [extended dashboard JSON files](extended/), you'll nee
 
 For the [extended database status dashboard](extended/redis-cloud-database-extended-dashboard.json), you'll need to configure the Infinity data source plugin. This supports the extended _Modules_ and _Configuration_ panes.
 
-The Reds Datasource requires only that you configure an account for accessing the Redis cluster. When you install the datasource plugin you will need to enter the redis cluster address, eg. redis://REDIS_SOFTWARE_HOSTNAME:<REDIS_SOFTWARE_PORT>, then enable the ACL switch and enter a username and password. We recommend creating a user with the 'Cluster View' role that is used only for this purpose. 
 
 After uploading the JSON, you can follow these steps:
 
