@@ -47,7 +47,7 @@ this collection of pre-built dashboards to help get you started quickly.
 These dashboards are built for Grafana and rely on a Prometheus data source. Therefore, you will need:
 
 * A Prometheus deployment capable of scraping the metrics endpoints provided by your Redis Enterprise deployment
-* A Grafana deployment that can issues PromQL queries against your Prometheus instance
+* A Grafana deployment that can issue PromQL queries against your Prometheus instance
 
 For information on the Redis Enterprise Prometheus endpoints, see the official docs:
 * [Redis Enterprise Prometheus documentation](https://docs.redis.com/latest/rs/clusters/monitoring/prometheus-integration/)
