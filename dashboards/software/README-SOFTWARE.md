@@ -4,11 +4,11 @@ We provide two sets of Grafana dashboards for monitoring your Redis Enterprise S
 
 The [basic dashboards](basic/) require that you have the Grafana Prometheus data source installed and configured to monitor your Redis Cloud deployment.
 
-The optional [extended dashboards](extended/) rely on two additional data sources beyond Prometheus: the [Redis Datasourse for Grafana](https://grafana.com/grafana/plugins/redis-datasource/) and the [Infinity Datasource for Grafana](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/). These dashboards provide additional dashboard panes, including Redis Cloud subscription configuration settings and a table of Redis slow log entries.
+The optional [extended dashboards](extended/) rely on two additional data sources beyond Prometheus: the [Redis Datasource for Grafana](https://grafana.com/grafana/plugins/redis-datasource/) and the [Infinity Datasource for Grafana](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/). These dashboards provide additional dashboard panes, including Redis Cloud subscription configuration settings and a table of Redis slow log entries.
 
 ## Basic dashboard configuration
 
-Once you've configued Prometheus to scrape the [Redis Software Prometheus endpoint](https://docs.redis.com/latest/rs/clusters/monitoring/prometheus-integration/), you can import the dashboard files in to Grafana. Here are the steps:
+Once you've configured Prometheus to scrape the [Redis Software Prometheus endpoint](https://docs.redis.com/latest/rs/clusters/monitoring/prometheus-integration/), you can import the dashboard files in to Grafana. Here are the steps:
 
 1. Open Grafana's dashboard tab, click on the blue 'New' button on the far right and select 'Import'.
 
@@ -18,13 +18,13 @@ Once you've configued Prometheus to scrape the [Redis Software Prometheus endpoi
 
 ## Extended dashboard configuration
 
-If you want to to use the [extendeda dashboard JSON files](extended/), you'll need to make
-some additional configuration changes.
+If you want to to use the [extended dashboard JSON files](extended/), you'll need to make some additional configuration changes.
 
-For the [extended database status dashboard](extended/redis-cloud-database-dashboard.json), you'll need to configure the Infinity data source plugin, which supports the _Modules_ and _Configuration_ panes.
+For the [extended database status dashboard](extended/redis-cloud-database-dashboard.json), you'll need to configure both the Redis Datasource plugin and the Infinity data source plugin, which supports the _Modules_ and _Configuration_ panes.
 
-The Database Status Dashboard has two panels that need to 
-be configured; Modules, and Configuration. They should use the Infinity datasource with the following settings:
+The Reds Datasource requires only that you configure an account for accessing the Redis cluster. Select 'Data sources' from the Grafana admin console and then select the Redis data source. Replace the placeholder value <REDIS_SOFTWARE_HOSTNAME> with the hostname and/or address of your cluster, and set the port if you have changed it from the default. Then change the value of the 'Authorization' header to include user/pass after 'Basic'. We recommend you choose a user that has the 'Cluster View' role.
+
+The Database Status Dashboard has two panels that need to be configured; Modules, and Configuration. They should use the Infinity datasource with the following settings:
 
 ```
 Type=JSON, Parser=Backend, Source=URL, Format=Table, Method=GET, URL=https://<REDIS_SOFTWARE_HOSTNAME>:9443/v1/bdbs

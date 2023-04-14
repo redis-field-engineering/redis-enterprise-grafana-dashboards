@@ -4,11 +4,11 @@ We provide two sets of Grafana dashboards for monitoring your Redis Enterprise C
 
 The [basic dashboards](basic/) require that you have the Grafana Prometheus data source installed and configured to monitor your Redis Cloud deployment.
 
-The optional [extended dashboards](extended/) rely on two additional data sources beyond Prometheus: the [Redis Datasourse for Grafana](https://grafana.com/grafana/plugins/redis-datasource/) and the [Infinity Datasource for Grafana](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/). These dashboards provide additional dashboard panes, including Redis Cloud subscription configuration settings and a table of Redis slow log entries.
+The optional [extended dashboards](extended/) rely on two additional data sources beyond Prometheus: the [Redis Datasource for Grafana](https://grafana.com/grafana/plugins/redis-datasource/) and the [Infinity Datasource for Grafana](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/). These dashboards provide additional dashboard panes, including Redis Cloud subscription configuration settings and a table of Redis slow log entries.
 
 ## Basic dashboard configuration
 
-Once you've configued Prometheus to scrape the [Redis Cloud Prometheus endpoint](https://docs.redis.com/latest/rc/cloud-integrations/prometheus-integration/), you can import the dashboard files in to Grafana. Here are the steps:
+Once you've configured Prometheus to scrape the [Redis Cloud Prometheus endpoint](https://docs.redis.com/latest/rc/cloud-integrations/prometheus-integration/), you can import the dashboard files in to Grafana. Here are the steps:
 
 1. Open Grafana's dashboard tab, click on the blue 'New' button on the far right and select 'Import'.
 
@@ -18,16 +18,15 @@ Once you've configued Prometheus to scrape the [Redis Cloud Prometheus endpoint]
 
 ## Extended dashboard configuration
 
-If you want to to use the [extendeda dashboard JSON files](extended/), you'll need to make
-some additional configuration changes.
+If you want to to use the [extended dashboard JSON files](extended/), you'll need to make some additional configuration changes.
 
-For the [extended database status dashboard](extended/redis-cloud-database-dashboard.json), you'll need to configure the Infinity data source plugin to connect to the Redis Cloud API. After uploading the JSON, you can follow these steps:
+For the [extended database status dashboard](extended/redis-cloud-database-extended-dashboard.json), you'll need to configure the Infinity data source plugin to connect to the Redis Cloud API. After uploading the JSON, you can follow these steps:
 
 1. Open the Database Status dashboard settings and select 'Variables' from the left-hand menu.
 2. Add a variable 'subscription'.
 3. Set its data source to 'Infinity'.
 4. Set Type=JSON, Parser=Backend, Source=URL, Method=GET, Format=Table, URL=https://api.redislabs.com/v1/subscriptions
-5. CLick on 'Headers, Request parameters' and add the following headers;
+5. CLick on 'Headers, Request parameters' and add/set the following headers;
    - accept = application/json
    - x-secret-key = <REDIS-CLOUD-API-ACCOUNT-KEY>
    - x-api-secret-key = <REDIS-CLOUD-API-SECRET-KEY>
@@ -41,9 +40,9 @@ For the [extended database status dashboard](extended/redis-cloud-database-dashb
    
 7. Click _Run query_ at the very bottom and your subscription id should be returned.
 
-For the , you'll need to configure the Infinity data source plugin to connect to the Redis Cloud API. After uploading the JSON, you can follow these steps:
+For the extended dashboard, you'll need to configure both the Redis Datasource plugin and the Infinity data source plugin. After uploading the JSON, you can follow these steps:
 
-The [extended subscription status dashboard](extended/redis-cloud-subscription-dashboard.json) two panels that need to be configured: Modules and Configuration. They should use the Infinity datasource with the same settings as above, but with the following exceptions:
+The [extended subscription status dashboard](extended/redis-cloud-subscription-dashboard.json) has two panels that need to be configured: Modules and Configuration. They should use the Infinity datasource with the same settings as above, but with the following exceptions:
 
 1. For Modules & Configuration: URL = https://api.redislabs.com/v1/subscriptions/$subscription/databases/$bdb
 2. For Modules, Open 'Parsing options and Result fields' and set the Rows/Root=modules.
