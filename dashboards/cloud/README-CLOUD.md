@@ -26,7 +26,7 @@ For the [extended database status dashboard](extended/redis-cloud-database-exten
 2. Add a variable 'subscription'.
 3. Set its data source to 'Infinity'.
 4. Set Type=JSON, Parser=Backend, Source=URL, Method=GET, Format=Table, URL=https://api.redislabs.com/v1/subscriptions
-5. CLick on 'Headers, Request parameters' and add/set the following headers;
+5. Click on 'Headers, Request parameters' and add/set the following headers;
    - accept = application/json
    - x-secret-key = <REDIS-CLOUD-API-ACCOUNT-KEY>
    - x-api-secret-key = <REDIS-CLOUD-API-SECRET-KEY>
