@@ -4,10 +4,10 @@ This repository contains a collection of Grafana dashboards for [Redis Enterpris
 These dashboards rely on metrics exported by the Redis Enterprise and Redis Cloud Prometheus endpoints.
 
 For Redis Enterprise, we provide the following dashboards:
-* [Cluster status](dashboards/software/basic/redis-enterprise-cluster-status-dashboard.json)
-* [Database status](dashboards/software/basic/redis-enterprsie-database-dashboard.json)
-* [Node metrics](dashboards/software/basic/redis-enterprise-node-dashboard.json)
-* [Shard metrics](dashboards/software/basic/redis-enterprise-shard-dashboard.json)
+* [Cluster status](dashboards/software/basic/redis-software-cluster-dashboard.json)
+* [Database status](dashboards/software/basic/redis-software-database-dashboard.json)
+* [Node metrics](dashboards/software/basic/redis-software-node-dashboard.json)
+* [Shard metrics](dashboards/software/basic/redis-software-shard-dashboard.json)
 
 For Redis Cloud, which is fully managed, we provide two dashboards:
 * [Subscription status](dashboards/cloud/basic/redis-cloud-subscription-dashboard.json)
@@ -39,7 +39,7 @@ When you run Redis in production, it's important that you have visibility into i
 For this reason, both of these Redis Enterprise products export metrics through a Prometheus endpoint.
 You can collect these metrics using Prometheus and visualize them using Grafana.
 
-Becuase it can take a lot of time to design a dashboard with the appropriate metrics, we provide
+Because it can take a lot of time to design a dashboard with the appropriate metrics, we provide
 this collection of pre-built dashboards to help get you started quickly.
 
 ## Prerequisites
@@ -47,7 +47,7 @@ this collection of pre-built dashboards to help get you started quickly.
 These dashboards are built for Grafana and rely on a Prometheus data source. Therefore, you will need:
 
 * A Prometheus deployment capable of scraping the metrics endpoints provided by your Redis Enterprise deployment
-* A Grafana deploment that can issues PromQL queries against your Prometheus instance
+* A Grafana deployment that can issues PromQL queries against your Prometheus instance
 
 For information on the Redis Enterprise Prometheus endpoints, see the official docs:
 * [Redis Enterprise Prometheus documentation](https://docs.redis.com/latest/rs/clusters/monitoring/prometheus-integration/)
@@ -73,10 +73,10 @@ See the official Redis Enterprise docs for a complete example of configuring bot
 ### Redis Software dashboards
 
 For Redis Enterprise, we provide the following dashboards:
-* [Cluster status](dashboards/software/basic/redis-enterprise-cluster-status-dashboard.json)
-* [Database status](dashboards/software/basic/redis-enterprsie-database-dashboard.json)
-* [Node metrics](dashboards/software/basic/redis-enterprise-node-dashboard.json)
-* [Shard metrics](dashboards/software/basic/redis-enterprise-shard-dashboard.json)
+* [Cluster status](dashboards/software/basic/redis-software-cluster-dashboard.json)
+* [Database status](dashboards/software/basic/redis-software-database-dashboard.json)
+* [Node metrics](dashboards/software/basic/redis-software-node-dashboard.json)
+* [Shard metrics](dashboards/software/basic/redis-software-shard-dashboard.json)
 
 You can upload these dashboards directly though the Grafana UI. For additional installation instructions, see the [Redis Enterprise dashboards README](dashboards/software/README-SOFTWARE.md).
 
@@ -90,9 +90,9 @@ You can upload these dashboards directly though the Grafana UI. For additional i
 
 ## Extended dashboards
 
-We also provided an set of extended dashboards for both Redis Software and Redis Cloud that provide additional metrics, including more informantion about you cluster's configuration and Redis slow log.
+We also provided an set of extended dashboards for both Redis Software and Redis Cloud that provide additional metrics, including more information about you cluster's configuration and Redis slow log.
 
-These optional dashboards rely on two additional data sources beyond Prometheus: the [Redis Datasourse for Grafana](https://grafana.com/grafana/plugins/redis-datasource/) and the [Infinity Datasource for Grafana](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/).
+These optional dashboards rely on two additional data sources beyond Prometheus: the [Redis Datasource for Grafana](https://grafana.com/grafana/plugins/redis-datasource/) and the [Infinity Datasource for Grafana](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/).
 
 ## Alerts
 
