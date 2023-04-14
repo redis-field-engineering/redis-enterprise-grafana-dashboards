@@ -1,46 +1,104 @@
-# Redis Enterprise Dashboards
+# Redis Enterprise Grafana Dashboards
 
-These dashboards are intended to graphically present standard metrics of every level of a Redis Enterprise installation. Alert configuration files 
-will assist you in providing notifications should any of a number of key values exceed their expected ranges. Lastly, metrics description files 
-provide information about additional values that can be monitored.
+This repository contains a collection of Grafana dashboards for [Redis Enterprise](https://docs.redis.com/latest/rs/) and [Redis Cloud](https://docs.redis.com/latest/rc/).
+These dashboards rely on metrics exported by the Redis Enterprise and Redis Cloud Prometheus endpoints.
 
-## Getting Started
+For Redis Enterprise, we provide the following dashboards:
+* [Cluster status](dashboards/software/basic/redis-enterprise-cluster-status-dashboard.json)
+* [Database status](dashboards/software/basic/redis-enterprsie-database-dashboard.json)
+* [Node metrics](dashboards/software/basic/redis-enterprise-node-dashboard.json)
+* [Shard metrics](dashboards/software/basic/redis-enterprise-shard-dashboard.json)
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for 
-notes on how to deploy the project on a live system.
+For Redis Cloud, which is fully managed, we provide two dashboards:
+* [Subscription status](dashboards/cloud/basic/redis-cloud-subscription-dashboard.json)
+* [Database status](dashboards/cloud/basic/redis-cloud-database-dashboard.json)
 
-### Prerequisites
+This repository also contains [alert configuration files](rules/alerts.yml) for Prometheus that can generate notifications when any of a number of key metrics fall outside of their expected ranges.
 
-You will need to install the following software packages. Depending on your distribution there may be different ways of installing; choose the 
-packaging style with which you are most familiar
+Finally, we include a set of [metrics descriptions](metrics) for your reference.
 
-```
-Prometheus
-Grafana
-```
+## Table of Contents
 
-### Installing
+* [Background](#background)
+* [Prerequisites](#prerequisites)
+* [Installation](#installation)
+   - [Redis Software dashboards](#redis-software-dashboards)
+   - [Redis Cloud dashboards](#redis-cloud-dashboards)
+* [Extended dashboards](#extended-dashboards)
+* [Alerts](#alerts)
+* [Support](#support)
+* [License](#license)
 
-Once both Prometheus and Grafana have been installed you will need to modify Prometheus' config file and point it at Redis' metrics endpoint. Once 
-that has been done you must create a Prometheus data source in Grafana's administration console. Please follow the 
-instructions on the following page:
+## Background
 
-```
-https://docs.redis.com/latest/rs/clusters/monitoring/prometheus-integration/
-```
+Redis Enterprise is available in two deployment options:
+* A self-managed product, called Redis Enterprise Software, for deployment on-premises and in private clouds, etc.
+* The fully-managed Redis Enterprise Cloud, which is available on AWS, Azure, and GCP.
 
-### Third-party plugin
+When you run Redis in production, it's important that you have visibility into its behavior.
+For this reason, both of these Redis Enterprise products export metrics through a Prometheus endpoint.
+You can collect these metrics using Prometheus and visualize them using Grafana.
 
-Certain information displays require the installation of a third-party plugin, Infinity. Find it here:
+Becuase it can take a lot of time to design a dashboard with the appropriate metrics, we provide
+this collection of pre-built dashboards to help get you started quickly.
 
-```
-https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/
-```
+## Prerequisites
 
+These dashboards are built for Grafana and rely on a Prometheus data source. Therefore, you will need:
 
-### Running the tests
+* A Prometheus deployment capable of scraping the metrics endpoints provided by your Redis Enterprise deployment
+* A Grafana deploment that can issues PromQL queries against your Prometheus instance
 
-In order to run the alerting tests you will need to copy the rules/ and tests/ folders to your Prometheus installation. Once they have been copied 
+For information on the Redis Enterprise Prometheus endpoints, see the official docs:
+* [Redis Enterprise Prometheus documentation](https://docs.redis.com/latest/rs/clusters/monitoring/prometheus-integration/)
+* [Redis Cloud Prometheus documentation](https://docs.redis.com/latest/rc/cloud-integrations/prometheus-integration/)
+
+## Installation
+
+To use these dashboards, you first need to run and configure Prometheus and Grafana.
+You can then upload the dashboard JSON files through the Grafana UI. The JSON files
+you choose will depend on when you're deploying Redis Software or Redis Cloud.
+See the sections below for details.
+
+### Prometheus and Grafana
+
+1. Configure your [Prometheus deployment's scraping config](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config) so that it reads from your Redis Enterprise Prometheus endpoint.
+
+2. [Create a Prometheus data source](https://grafana.com/docs/grafana/v8.5/datasources/add-a-data-source/) in Grafana's administration console.
+
+See the official Redis Enterprise docs for a complete example of configuring both Prometheus and Grafana:
+
+* [Prometheus and Grafana with Redis Enterprise](https://docs.redis.com/latest/rs/clusters/monitoring/prometheus-integration/)
+
+### Redis Software dashboards
+
+For Redis Enterprise, we provide the following dashboards:
+* [Cluster status](dashboards/software/basic/redis-enterprise-cluster-status-dashboard.json)
+* [Database status](dashboards/software/basic/redis-enterprsie-database-dashboard.json)
+* [Node metrics](dashboards/software/basic/redis-enterprise-node-dashboard.json)
+* [Shard metrics](dashboards/software/basic/redis-enterprise-shard-dashboard.json)
+
+You can upload these dashboards directly though the Grafana UI. For additional installation instructions, see the [Redis Enterprise dashboards README](dashboards/software/README-SOFTWARE.md).
+
+### Redis Cloud dashboards
+
+For Redis Cloud, which is fully managed, we provide two dashboards:
+* [Subscription status](dashboards/cloud/basic/redis-cloud-subscription-dashboard.json)
+* [Database status](dashboards/cloud/basic/redis-cloud-database-dashboard.json)
+
+You can upload these dashboards directly though the Grafana UI. For additional installation instructions, see the [Redis Cloud dashboards README](dashboards/cloud/README-SOFTWARE.md).
+
+## Extended dashboards
+
+We also provided an set of extended dashboards for both Redis Software and Redis Cloud that provide additional metrics, including more informantion about you cluster's configuration and Redis slow log.
+
+These optional dashboards rely on two additional data sources beyond Prometheus: the [Redis Datasourse for Grafana](https://grafana.com/grafana/plugins/redis-datasource/) and the [Infinity Datasource for Grafana](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/).
+
+## Alerts
+
+### Running the alerting tests
+
+To run the alerting tests, you will need to copy the [rules/](rules) and [tests/](tests) folders to your Prometheus installation. Once they have been copied,
 you can execute the tests as follows:
 
 ```
@@ -49,104 +107,14 @@ promtool test rules tests/*
 
 ### Modifying the alerts
 
-Alerts can, and probably should, be modified to correpsond to your environment and its configuration. Additional alerts can be created 
-following Prometheus' alerting guidelines. It is strongly recommend to create unit tests for each of your alerts to ensure they perform as expected.
+You can customize the included alerts to the need of your Redis deployment environment and configuration. You can also create additional alerts following Prometheus' alerting guidelines. We strongly recommend that you create unit tests for each of your alerts to ensure that they perform as expected.
 
-Further details can be found [here](https://prometheus.io/docs/prometheus/latest/configuration/unit_testing_rules/)
-
-
-## Importing and Configuring the Dashboards (Cloud)
-
-Once all the components have been installed you can use the Grafana administration console to import the dashboard files. 
-
-Open Grafana's dashboard tab, click on the blue 'New' button on the far right and select 'Import', then click on the 'Upload JSON file' button and 
-navigate to the dashboard files included with the project in the 'dashboards' folder.
-
-The Database Status Dashboard needs to have a variable configured. 
-
-```
-1. Open the Database Status dashboard settings and select 'Variables' from the left-hand menu
-2. Add a variable 'subscription'
-3. Set its data source to 'Infinity'
-4. Type=JSON, Parser=Backend, Source=URL, Method=GET, Format=Table, URL=https://api.redislabs.com/v1/subscriptions
-5. CLick on 'Headers, Request parameters' and add the following headers;
-   - accept = application/json
-   - x-secret-key = <your secret key>
-   - x-api-secret-key = <your api key>
-   
-   add the following request parameters:
-   - offset = 0
-   - limit = 100
-   
-6. Open 'Parsing options and Result fields' and set the Rows/Root = subscriptions
-   - then set the column selector to id, as subscriptionId, and format as Number
-   
-7. Click 'Run query' at the very bottom and your subscription id should be returned.
-```
-
-The Database Status Dashboard has two panels that need to 
-be configured; Modules, and Configuration. They should use the Infinity datasource with the same settings as above with the following exceptions.
-
-```
-1. For Modules & Configuration: URL = https://api.redislabs.com/v1/subscriptions/$subscription/databases/$bdb
-2. For Modules, Open 'Parsing options and Result fields' and set the Rows/Root=modules
-3. Also for Modules, 'Parsing options and Result fields' need the following fields
-   - name, as Name, format as String
-   - version, as Version, format as String
-3. For Configuration, 'Parsing options and Result fields' need the following fields
-   - replication, as 1. Replication, format as String
-   - dataPersistence, as 2. Persistence, format as String
-   - backup.enableRemoteBackup, as 3. Backup, format as String
-   - dataEvictionPolicy, as 4. Eviction, format as String
-   - protocol, as 5. Protocol, format as String
-```
-
-
-## Importing and Configuring the Dashboards (Enterprise)
-
-Once all the components have been installed you can use the Grafana administration console to import the dashboard files. 
-
-Open Grafana's dashboard tab, click on the blue 'New' button on the far right and select 'Import', then click on the 'Upload JSON file' button and 
-navigate to the dashboard files included with the project in the 'dashboards' folder.
-
-The Database Status Dashboard has two panels that need to 
-be configured; Modules, and Configuration. They should use the Infinity datasource with the following settings.
-
-```
-1. Type=JSON, Parser=Backend, Source=URL, Format=Table, Method=GET, URL=https://<ip address>:9443/v1/bdbs
-2. For Modules, Open 'Parsing options and Result fields' and set the Rows/Root=module_list
-3. Also for Modules, 'Parsing options and Result fields' need the following fields
-   - module_name, as Name, format as String
-   - semantic_version, as Version, format as String
-3. For Configuration, 'Parsing options and Result fields' need the following fields
-   - replication, as 1. Replication, format as String
-   - data_persistence, as 2. Persistence, format as String
-   - backup, as 3. Backup, format as String
-   - eviction_policy, as 4. Eviction, format as String
-   - rack_aware, as 5. Multi AZ, format as String
-```
-
-## Authors
-
-John Burke - *Initial work* - [Redis](https://github.com/redis-field-engineering)
-
-See also the list of [contributors](https://github.com/redis-field-engineering/redis-cloud-dashboards/graphs/contributors) who participated in this 
-project.
+To learn more about testing alerts, see the [Prometheus documentation for unit testing rules](https://prometheus.io/docs/prometheus/latest/configuration/unit_testing_rules/).
 
 ## Support
-Redis Cloud Dashboards is supported by Redis, Inc. on a good faith effort basis. To report bugs, request features, or receive assistance, please 
-file an [issue](https://github.com/redis-field-engineering/redis-cloud-dashboards/issues).
 
-## License
-Redis Cloud Dashboards is licensed under the MIT License. Copyright © 2023 Redis, Inc.
+The Redis Enterprise Grafana dashboards are supported by Redis, Inc. on a good faith effort basis. To report bugs, request features, or receive assistance, please file an [issue](https://github.com/redis-field-engineering/redis-enterprise-grafana-dashboards/issues).
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
-
+These dashboards and configurations are licensed under the MIT License. Copyright (C) 2023 Redis, Inc.
