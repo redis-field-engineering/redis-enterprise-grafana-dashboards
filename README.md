@@ -86,7 +86,7 @@ For Redis Cloud, which is fully managed, we provide two dashboards:
 * [Subscription status](dashboards/cloud/basic/redis-cloud-subscription-dashboard.json)
 * [Database status](dashboards/cloud/basic/redis-cloud-database-dashboard.json)
 
-You can upload these dashboards directly though the Grafana UI. For additional installation instructions, see the [Redis Cloud dashboards README](dashboards/cloud/README-SOFTWARE.md).
+You can upload these dashboards directly though the Grafana UI. For additional installation instructions, see the [Redis Cloud dashboards README](dashboards/cloud/README-CLOUD.md).
 
 ## Extended dashboards
 
