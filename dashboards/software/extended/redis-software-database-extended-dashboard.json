@@ -37,7 +37,7 @@
       "type": "grafana",
       "id": "grafana",
       "name": "Grafana",
-      "version": "9.3.6"
+      "version": "9.4.7"
     },
     {
       "type": "datasource",
@@ -73,7 +73,7 @@
       "type": "datasource",
       "id": "yesoreyeram-infinity-datasource",
       "name": "Infinity",
-      "version": "1.4.0"
+      "version": "1.3.0"
     }
   ],
   "annotations": {
@@ -295,7 +295,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -361,7 +361,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -542,7 +542,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -611,7 +611,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -672,7 +672,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "mappings": [],
@@ -701,6 +703,7 @@
       "id": 76,
       "options": {
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -709,17 +712,17 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "columns": [
             {
-              "selector": "name",
+              "selector": "module_name",
               "text": "Name",
               "type": "string"
             },
             {
-              "selector": "version",
+              "selector": "semantic_version",
               "text": "Version",
               "type": "string"
             }
@@ -737,24 +740,16 @@
           },
           "parser": "backend",
           "refId": "A",
-          "root_selector": "modules",
+          "root_selector": "module_list",
           "source": "url",
           "type": "json",
-          "url": "https://api.redislabs.com/v1/subscriptions/$subscription/databases/$bdb",
+          "url": "https://<REDIS_SOFTWARE_HOSTNAME>:9443/v1/bdbs/$bdb",
           "url_options": {
             "data": "",
             "headers": [
               {
-                "key": "accept",
-                "value": "application/json"
-              },
-              {
-                "key": "x-api-key",
-                "value": "Armjlu9edjsq139bw4vz628sm5z0wc1isj8pkr91px5pukazxn"
-              },
-              {
-                "key": "x-api-secret-key",
-                "value": "S5nfcb3bu7xecok4psfx32e8x2ffgi6su4borw6ai6bpbsbweb3"
+                "key": "Authorization",
+                "value": "Basic dGVzdEByZWRpcy5jb206cnVkZWFsbHlvdXNlYmFnYXM="
               }
             ],
             "method": "GET"
@@ -815,7 +810,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -884,7 +879,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -913,7 +908,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "mappings": [],
@@ -979,6 +976,7 @@
       "id": 68,
       "options": {
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -988,7 +986,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "command": "slowlogGet",
@@ -1053,7 +1051,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -1119,7 +1117,7 @@
         },
         "textMode": "auto"
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "datasource": {
@@ -1149,7 +1147,9 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
             "inspect": false
           },
           "mappings": [],
@@ -1227,6 +1227,7 @@
       "id": 72,
       "options": {
         "footer": {
+          "countRows": false,
           "fields": "",
           "reducer": [
             "sum"
@@ -1236,7 +1237,7 @@
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "9.3.6",
+      "pluginVersion": "9.4.7",
       "targets": [
         {
           "columns": [
@@ -1246,23 +1247,23 @@
               "type": "string"
             },
             {
-              "selector": "dataPersistence",
+              "selector": "data_persistence",
               "text": "2. Persistence",
               "type": "string"
             },
             {
-              "selector": "backup.enableRemoteBackup",
+              "selector": "backup",
               "text": "3. Backup",
               "type": "string"
             },
             {
-              "selector": "dataEvictionPolicy",
+              "selector": "eviction_policy",
               "text": "4. Eviction",
               "type": "string"
             },
             {
-              "selector": "protocol",
-              "text": "5. Protocol",
+              "selector": "rack_aware",
+              "text": "5. Multi AZ",
               "type": "string"
             }
           ],
@@ -1281,25 +1282,16 @@
           "root_selector": "",
           "source": "url",
           "type": "json",
-          "url": "https://api.redislabs.com/v1/subscriptions/$subscription/databases/$bdb",
+          "url": "https://10.11.0.17:9443/v1/bdbs/$bdb",
           "url_options": {
             "data": "",
             "headers": [
               {
-                "key": "accept",
-                "value": "application/json"
-              },
-              {
-                "key": "x-api-key",
-                "value": "Armjlu9edjsq139bw4vz628sm5z0wc1isj8pkr91px5pukazxn"
-              },
-              {
-                "key": "x-api-secret-key",
-                "value": "S5nfcb3bu7xecok4psfx32e8x2ffgi6su4borw6ai6bpbsbweb3"
+                "key": "Authorization",
+                "value": "Basic dGVzdEByZWRpcy5jb206cnVkZWFsbHlvdXNlYmFnYXM="
               }
             ],
-            "method": "GET",
-            "params": []
+            "method": "GET"
           }
         }
       ],
@@ -1307,12 +1299,11 @@
       "type": "table"
     }
   ],
-  "refresh": false,
-  "schemaVersion": 37,
+  "refresh": "",
+  "revision": 1,
+  "schemaVersion": 38,
   "style": "dark",
-  "tags": [
-    "RLEC"
-  ],
+  "tags": [],
   "templating": {
     "list": [
       {
@@ -1337,74 +1328,6 @@
         "sort": 1,
         "type": "query",
         "useTags": false
-      },
-      {
-        "current": {},
-        "datasource": {
-          "type": "yesoreyeram-infinity-datasource",
-          "uid": "${DS_INFINITY}"
-        },
-        "definition": "Infinity- (infinity) json",
-        "hide": 0,
-        "includeAll": false,
-        "multi": false,
-        "name": "subscription",
-        "options": [],
-        "query": {
-          "infinityQuery": {
-            "columns": [
-              {
-                "selector": "id",
-                "text": "subscriptionId",
-                "type": "number"
-              }
-            ],
-            "filters": [],
-            "format": "table",
-            "parser": "backend",
-            "refId": "variable",
-            "root_selector": "subscriptions",
-            "source": "url",
-            "type": "json",
-            "uql": "parse-json",
-            "url": "https://api.redislabs.com/v1/subscriptions",
-            "url_options": {
-              "data": "",
-              "headers": [
-                {
-                  "key": "accept",
-                  "value": "application/json"
-                },
-                {
-                  "key": "x-api-key",
-                  "value": "Armjlu9edjsq139bw4vz628sm5z0wc1isj8pkr91px5pukazxn"
-                },
-                {
-                  "key": "x-api-secret-key",
-                  "value": "S5nfcb3bu7xecok4psfx32e8x2ffgi6su4borw6ai6bpbsbweb3"
-                }
-              ],
-              "method": "GET",
-              "params": [
-                {
-                  "key": "offset",
-                  "value": "0"
-                },
-                {
-                  "key": "limit",
-                  "value": "100"
-                }
-              ]
-            }
-          },
-          "query": "",
-          "queryType": "infinity"
-        },
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
       },
       {
         "current": {},
@@ -1550,73 +1473,6 @@
         "refresh": 2,
         "skipUrlSync": false,
         "type": "interval"
-      },
-      {
-        "current": {},
-        "datasource": {
-          "type": "yesoreyeram-infinity-datasource",
-          "uid": "${DS_INFINITY}"
-        },
-        "definition": "Infinity- (infinity) json",
-        "hide": 2,
-        "includeAll": false,
-        "multi": false,
-        "name": "databaseId",
-        "options": [],
-        "query": {
-          "infinityQuery": {
-            "columns": [
-              {
-                "selector": "name",
-                "text": "name",
-                "type": "string"
-              }
-            ],
-            "filters": [],
-            "format": "table",
-            "parser": "backend",
-            "refId": "variable",
-            "root_selector": "subscription[*].databases[*]",
-            "source": "url",
-            "type": "json",
-            "url": "https://api.redislabs.com/v1/subscriptions/2006947/databases",
-            "url_options": {
-              "data": "",
-              "headers": [
-                {
-                  "key": "accept",
-                  "value": "application/json"
-                },
-                {
-                  "key": "x-api-key",
-                  "value": "Armjlu9edjsq139bw4vz628sm5z0wc1isj8pkr91px5pukazxn"
-                },
-                {
-                  "key": "x-api-secret-key",
-                  "value": "S5nfcb3bu7xecok4psfx32e8x2ffgi6su4borw6ai6bpbsbweb3"
-                }
-              ],
-              "method": "GET",
-              "params": [
-                {
-                  "key": "offset",
-                  "value": "0"
-                },
-                {
-                  "key": "limit",
-                  "value": "100"
-                }
-              ]
-            }
-          },
-          "query": "",
-          "queryType": "infinity"
-        },
-        "refresh": 1,
-        "regex": "",
-        "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
       }
     ]
   },
@@ -1650,8 +1506,8 @@
     ]
   },
   "timezone": "utc",
-  "title": "Database Status Dashboard",
-  "uid": "Zrko4CoVK",
-  "version": 179,
+  "title": "Database Status - Extended Dashboard",
+  "uid": "p7BoEiE4z",
+  "version": 2,
   "weekStart": ""
 }
