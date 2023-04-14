@@ -92,7 +92,7 @@ You can upload these dashboards directly though the Grafana UI. For additional i
 
 We also provided an set of extended dashboards for both Redis Software and Redis Cloud that provide additional metrics, including more information about you cluster's configuration and Redis slow log.
 
-These optional dashboards rely on one additional data sourcesbeyond Prometheus: the [Infinity Datasource for Grafana](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/).
+These optional dashboards rely on one additional data source beyond Prometheus: the [Infinity Datasource for Grafana](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/).
 
 ## Alerts
 
