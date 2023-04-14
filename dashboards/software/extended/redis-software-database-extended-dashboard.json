@@ -1282,7 +1282,7 @@
           "root_selector": "",
           "source": "url",
           "type": "json",
-          "url": "https://10.11.0.17:9443/v1/bdbs/$bdb",
+          "url": "https://<> REDIS_SOFTWARE_HOSTNAME:9443/v1/bdbs/$bdb",
           "url_options": {
             "data": "",
             "headers": [
