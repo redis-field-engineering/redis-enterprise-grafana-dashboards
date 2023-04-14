@@ -22,7 +22,7 @@ If you want to to use the [extended dashboard JSON files](extended/), you'll nee
 
 For the [extended database status dashboard](extended/redis-cloud-database-dashboard.json), you'll need to configure both the Redis Datasource plugin and the Infinity data source plugin, which supports the _Modules_ and _Configuration_ panes.
 
-The Reds Datasource requires only that you configure an account for accessing the Redis cluster. Select 'Data sources' from the Grafana admin console and then select the Redis data source. Replace the placeholder value <REDIS_SOFTWARE_HOSTNAME> with the hostname and/or address of your cluster, and set the port if you have changed it from the default. Then change the value of the 'Authorization' header to include user/pass after 'Basic'. We recommend you choose a user that has the 'Cluster View' role.
+The Reds Datasource requires only that you configure an account for accessing the Redis cluster. When you install the datasource plugin you will need to enter the redis cluster address, eg. redis://REDIS_SOFTWARE_HOSTNAME:<REDIS_SOFTWARE_PORT>, then enable the ACL switch and enter a username and password. We recommend creating a user with the 'Cluster View' role that is used only for this purpose.
 
 The Database Status Dashboard has two panels that need to be configured; Modules, and Configuration. They should use the Infinity datasource with the following settings:
 

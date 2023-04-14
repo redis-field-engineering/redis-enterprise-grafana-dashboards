@@ -20,7 +20,9 @@ Once you've configured Prometheus to scrape the [Redis Cloud Prometheus endpoint
 
 If you want to to use the [extended dashboard JSON files](extended/), you'll need to make some additional configuration changes.
 
-For the [extended database status dashboard](extended/redis-cloud-database-extended-dashboard.json), you'll need to configure the Infinity data source plugin to connect to the Redis Cloud API. After uploading the JSON, you can follow these steps:
+For the [extended database status dashboard](extended/redis-cloud-database-extended-dashboard.json), you'll need to configure the Infinity data source plugin. This supports the extended _Modules_ and _Configuration_ panes.
+
+After uploading the JSON, you can follow these steps:
 
 1. Open the Database Status dashboard settings and select 'Variables' from the left-hand menu.
 2. Add a variable 'subscription'.

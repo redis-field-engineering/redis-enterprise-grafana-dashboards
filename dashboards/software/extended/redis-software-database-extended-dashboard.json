@@ -15,14 +15,6 @@
       "type": "datasource",
       "pluginId": "yesoreyeram-infinity-datasource",
       "pluginName": "Infinity"
-    },
-    {
-      "name": "DS_REDIS",
-      "label": "Redis",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "redis-datasource",
-      "pluginName": "Redis"
     }
   ],
   "__elements": {},
@@ -44,12 +36,6 @@
       "id": "prometheus",
       "name": "Prometheus",
       "version": "1.0.0"
-    },
-    {
-      "type": "datasource",
-      "id": "redis-datasource",
-      "name": "Redis",
-      "version": "2.1.1"
     },
     {
       "type": "panel",
@@ -188,7 +174,7 @@
         ]
       },
       "gridPos": {
-        "h": 9,
+        "h": 10,
         "w": 8,
         "x": 0,
         "y": 0
@@ -634,10 +620,10 @@
         "uid": "${DS_PROMETHEUS}"
       },
       "gridPos": {
-        "h": 5,
+        "h": 9,
         "w": 8,
         "x": 0,
-        "y": 9
+        "y": 10
       },
       "id": 74,
       "options": {
@@ -743,7 +729,7 @@
           "root_selector": "module_list",
           "source": "url",
           "type": "json",
-          "url": "https://<REDIS_SOFTWARE_HOSTNAME>:9443/v1/bdbs/$bdb",
+          "url": "https://10.11.0.17:9443/v1/bdbs/$bdb",
           "url_options": {
             "data": "",
             "headers": [
@@ -895,115 +881,6 @@
       ],
       "title": "User CPU",
       "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "redis-datasource",
-        "uid": "${DS_REDIS}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "custom": {
-            "align": "auto",
-            "cellOptions": {
-              "type": "auto"
-            },
-            "inspect": false
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Id"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 37
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Duration"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 72
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "Timestamp"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 146
-              }
-            ]
-          }
-        ]
-      },
-      "gridPos": {
-        "h": 5,
-        "w": 8,
-        "x": 0,
-        "y": 14
-      },
-      "id": 68,
-      "options": {
-        "footer": {
-          "countRows": false,
-          "fields": "",
-          "reducer": [
-            "sum"
-          ],
-          "show": false
-        },
-        "showHeader": true,
-        "sortBy": []
-      },
-      "pluginVersion": "9.4.7",
-      "targets": [
-        {
-          "command": "slowlogGet",
-          "datasource": {
-            "type": "redis-datasource",
-            "uid": "${DS_REDIS}"
-          },
-          "query": "",
-          "refId": "A",
-          "size": 1000,
-          "streaming": false,
-          "type": "command"
-        }
-      ],
-      "title": "Slowlog",
-      "transformations": [],
-      "type": "table"
     },
     {
       "datasource": {
@@ -1508,6 +1385,6 @@
   "timezone": "utc",
   "title": "Database Status - Extended Dashboard",
   "uid": "p7BoEiE4z",
-  "version": 2,
+  "version": 3,
   "weekStart": ""
 }
