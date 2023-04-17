@@ -729,13 +729,13 @@
           "root_selector": "module_list",
           "source": "url",
           "type": "json",
-          "url": "https://10.11.0.17:9443/v1/bdbs/$bdb",
+          "url": "https://<REDIS_SOFTWARE_HOSTNAME>:9443/v1/bdbs/$bdb",
           "url_options": {
             "data": "",
             "headers": [
               {
                 "key": "Authorization",
-                "value": "Basic dGVzdEByZWRpcy5jb206cnVkZWFsbHlvdXNlYmFnYXM="
+                "value": "Basic <AUTHORIZATION_USERNAME_PASSWORD>"
               }
             ],
             "method": "GET"
