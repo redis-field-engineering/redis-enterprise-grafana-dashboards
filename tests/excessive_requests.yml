@@ -4,15 +4,15 @@
 rule_files:
   - ../rules/alerts.yml
 
-evaluation_interval: 1m
+evaluation_interval: 30s
 
 tests:
   # Test 1.
-  - interval: 1m
+  - interval: 30s
     # Series data.
     input_series:
-      - series: 'redis_up{job="redis", instance="localhost:6379"}'
-        values: '999999 1000000 1000001 1000001 1000001 1000001 1000001 1000001 1000001 1000001 1000001 1000001 1000000 1000000 999999'
+      - series: 'bdb_total_req{job="redis", cluster="localhost", bdb="1"}'
+        values: '999999 2000000 2000001 2000001 2000001 2000001 2000001 2000001 2000001 2000001 2000001 2000001 2000000 2000000 999999'
 
     # Unit test for alerting rules.
     alert_rule_test:
@@ -23,8 +23,10 @@ tests:
           # Alert 1.
           - exp_labels:
               severity: notification
-              instance: localhost:6379
               job: redis            
+              cluster: localhost
+              bdb: 1            
             exp_annotations:
               summary: Excessive Redis Requests
-              description: "Too Many Redis Operations - Cluster: {{ $labels.cluster }} DB: {{$labels.bdb}} {{$value}} (ops/sec)"
+              description: "Too Many Redis Operations - Cluster: localhost DB: 1 2.000001e+06 (ops/sec)"
+              runbook: https://github.com/Redislabs-Solution-Architects/RedisEnterprisePrometheus/blob/master/runbooks/throughput.md#excessive-redis-requests

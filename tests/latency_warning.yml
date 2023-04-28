@@ -4,27 +4,30 @@
 rule_files:
   - ../rules/alerts.yml
 
-evaluation_interval: 1m
+evaluation_interval: 15s
 
 tests:
   # Test 1.
-  - interval: 1m
+  - interval: 15s
     # Series data.
     input_series:
-      - series: 'redis_up{job="redis", instance="localhost:6379"}'
-        values: '0.0008 0.0009 0.001 0.001 0.002 0.003 0.004 0.005 0.004 0.003 0.002 0.001 0.001 0.0009 0.0009'
+      - series: 'bdb_avg_latency{job="redis", cluster="localhost", bdb="1"}'
+        values: '0.001 0.002 0.001 0.001 0.002 0.003 0.004 0.005 0.004 0.003 0.002 0.001 0.001 0.001 0.002'
 
     # Unit test for alerting rules.
     alert_rule_test:
       # Unit test 1.
-      - eval_time: 1m
-        alertname: InstanceDown
+      - eval_time: 2m
+        alertname: Average Latency Warning
         exp_alerts:
           # Alert 1.
           - exp_labels:
               severity: notification
-              instance: localhost:6379
               job: redis            
+              cluster: localhost
+              bdb: 1
             exp_annotations:
-              summary: Redis instance is down
-              description: Redis instance localhost:6379 is down
+              summary: Average Latency Warning
+              description: "High Latency - Cluster: localhost DB: 1 Latency: 4 ms"
+              runbook: https://github.com/Redislabs-Solution-Architects/RedisEnterprisePrometheus/blob/master/runbooks/latency.md#average-latency
+

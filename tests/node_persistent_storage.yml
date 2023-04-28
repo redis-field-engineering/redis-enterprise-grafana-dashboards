@@ -8,13 +8,13 @@ evaluation_interval: 1m
 
 tests:
   # Test 1.
-  - interval: 1m
+  - interval: 30s
     # Series data.
     input_series:
-      - series: 'node_persistent_storage_free{job="redis", instance="localhost:6379"}'
-        values: '50 40 30 20 10 5 5 5 5 5 5 5 5 10 20'
-      - series: 'node_persistent_storage_avail{job="redis", instance="localhost:6379"}'
-        values: '50 40 30 20 10 5 5 5 5 5 5 5 5 10 20'
+      - series: 'node_persistent_storage_free{job="redis", cluster="localhost"}'
+        values: '3 2 1 1 1 1 1 1 1 2 2 2 2 2 3'
+      - series: 'node_persistent_storage_avail{job="redis", cluster="localhost"}'
+        values: '500 500 500 500 500 500 500 500 500 500 500 500 500 500 500'
 
     # Unit test for alerting rules.
     alert_rule_test:
@@ -25,8 +25,9 @@ tests:
           # Alert 1.
           - exp_labels:
               severity: critical
-              instance: localhost:6379
-              job: redis            
+              job: redis   
+              cluster: localhost         
             exp_annotations:
               summary: Node Persistent Storage
-              description: "Low on Persistent Storage - Cluster: {{ $labels.cluster }} Space Free: {{$value}}%"
+              description: "Low on Persistent Storage - Cluster: localhost Space Free: 0%"
+              runbook: https://github.com/Redislabs-Solution-Architects/RedisEnterprisePrometheus/blob/master/runbooks/nodes.md#node-persistent-storage

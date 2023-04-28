@@ -11,20 +11,20 @@ tests:
   - interval: 1m
     # Series data.
     input_series:
-      - series: 'bdb_crdt_syncer_status{job="redis", instance="localhost:6379"}'
+      - series: 'bdb_crdt_syncer_status{job="redis", cluster="localhost"}'
         values: '0 1 2 2 1 2 1 1 2 2 2 1 2 0 1'
 
     # Unit test for alerting rules.
     alert_rule_test:
       # Unit test 1.
-      - eval_time: 10m
-        alertname: CRDTSync
+      - eval_time: 11m
+        alertname: CRDTSync Status
         exp_alerts:
           # Alert 1.
           - exp_labels:
               severity: warning
-              instance: localhost:6379
               job: redis
+              cluster: localhost
             exp_annotations:
               summary: Replication - Unsynchronized (CRDT)
-              description: CRDT Replication on localhost:6379 not synchronized for 5 minutes
+              description: CRDT Replication on localhost not synchronized for 5 minutes

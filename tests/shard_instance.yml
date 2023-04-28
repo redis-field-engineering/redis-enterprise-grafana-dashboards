@@ -8,23 +8,23 @@ evaluation_interval: 1m
 
 tests:
   # Test 1.
-  - interval: 1m
+  - interval: 30s
     # Series data.
     input_series:
-      - series: 'redis_up{job="redis", instance="localhost:6379"}'
-        values: '1 1 0 0 0 0 0 0 0 0 0 0 0 1 1'
+      - series: 'redis_up{job="redis", cluster="localhost"}'
+        values: '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0'
 
     # Unit test for alerting rules.
     alert_rule_test:
       # Unit test 1.
       - eval_time: 1m
-        alertname: InstanceDown
+        alertname: Shard Down
         exp_alerts:
           # Alert 1.
           - exp_labels:
               severity: page
-              instance: localhost:6379
               job: redis            
+              cluster: localhost
             exp_annotations:
-              summary: Redis Shard instance is down
-              description: Redis Shard instance {{ $labels.instance }} is down
+              summary: "Redis Shard instance is down"
+              description: "Redis Shard instance localhost is down"

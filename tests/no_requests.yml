@@ -27,4 +27,5 @@ tests:
               job: redis            
             exp_annotations:
               summary: No Redis Requests
-              description: "Too few Redis operations - Cluster: {{ $labels.cluster }} DB: {{$labels.bdb}}  {{$value}} (ops/sec)"
+              description: "Too few Redis operations - Cluster:  DB:   0 (ops/sec)"
+              runbook: https://github.com/Redislabs-Solution-Architects/RedisEnterprisePrometheus/blob/master/runbooks/throughput.md#no-redis-requests

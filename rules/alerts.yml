@@ -66,7 +66,7 @@ groups:
      labels:
        severity: notification
      annotations:
-       summary:
+       summary: Average Latency Warning
        description: "High Latency - Cluster: {{ $labels.cluster }} DB: {{$labels.bdb}} Latency: {{$value}} ms"
        runbook: https://github.com/Redislabs-Solution-Architects/RedisEnterprisePrometheus/blob/master/runbooks/latency.md#average-latency
    - alert: Average Latency Critical
@@ -75,7 +75,7 @@ groups:
      labels:
        severity: critical
      annotations:
-       summary:
+       summary: Average Latency Critical
        description: "High Latency - Cluster: {{ $labels.cluster }} DB: {{$labels.bdb}} Latency: {{$value}} ms"
        runbook: https://github.com/Redislabs-Solution-Architects/RedisEnterprisePrometheus/blob/master/runbooks/latency.md#average-latency
 
@@ -87,7 +87,7 @@ groups:
      labels:
        severity: notification
      annotations:
-       summary: "No cluster connections"
+       summary: "No Redis Connections"
        description: "No Connections - Cluster: {{ $labels.cluster }} DB: {{$labels.bdb}} Connections: {{$value}}"
        runbook: https://github.com/Redislabs-Solution-Architects/RedisEnterprisePrometheus/blob/master/runbooks/connections.md#no-redis-connections
    - alert: Excessive Connections
@@ -95,6 +95,9 @@ groups:
      for: 30s
      labels:
        severity: critical
+       job: redis
+       cluster: localhost
+       bdb: 1
      annotations:
        summary: "Too many connections"
        description: "Too Many Connections - Cluster: {{ $labels.cluster }} DB: {{$labels.bdb}} Connections: {{$value}}"
@@ -166,13 +169,13 @@ groups:
  - name: synchronization
    rules:
    - alert: ReplicaSync Status
-     expr: bdb_replicaof_syncer_status != 0
+     expr: bdb_replicaof_syncer_status > 0
      for: 5m
      labels:
        severity: warning
      annotations:
        summary: Replication - Resynchronization Requests (Status)
-       description: Replication on {{ $labels.instance }} not synchronized in 10 minutes
+       description: Replication on {{ $labels.cluster }} not synchronized in 10 minutes
    - alert: CRDTSync Status
      expr: bdb_crdt_syncer_status > 0
      for: 5m
@@ -180,23 +183,23 @@ groups:
        severity: warning
      annotations:
        summary: Replication - Unsynchronized (CRDT)
-       description: CRDT Replication on {{ $labels.instance }} not synchronized for 5 minutes
+       description: CRDT Replication on {{ $labels.cluster }} not synchronized for 5 minutes
    - alert: ReplicaLag Status
      expr: bdb_replicaof_syncer_local_ingress_lag_time > 500
-     for: 10m
+     for: 5m
      labels:
        severity: warning
      annotations:
        summary: Replication - High Latency (Status)
-       description: Replication Latency {{ $labels.instance }} exceeded 500ms for 10 minutes
+       description: Replication Latency {{ $labels.cluster }} exceeded 500ms for 10 minutes
    - alert: CRDTLag Status
      expr: bdb_crdt_syncer_local_ingress_lag_time > 500
-     for: 10m
+     for: 5m
      labels:
        severity: warning
      annotations:
        summary: Replication - High Latency (CRDT)
-       description: CRDT Replication Latency on {{ $labels.instance }} exceeded 500ms for 10 minutes
+       description: CRDT Replication Latency on {{ $labels.cluster }} exceeded 500ms for 10 minutes
 
 ### NODE, eg. all begin with node_ ###
  - name: nodes
@@ -206,6 +209,7 @@ groups:
      for: 5m
      labels:
        severity: critical
+       job: redis
      annotations:
        summary: Node Not Responding
        description: "Node Down - Cluster: {{ $labels.cluster }} Expected Nodes: 3 Actual: {{$value}}"
@@ -215,6 +219,7 @@ groups:
      for: 2m
      labels:
        severity: critical
+       job: redis
      annotations:
        summary: Node Persistent Storage
        description: "Low on Persistent Storage - Cluster: {{ $labels.cluster }} Space Free: {{$value}}%"
@@ -258,7 +263,7 @@ groups:
        severity: page
      annotations:
        summary: Redis Shard instance is down
-       description: Redis Shard instance {{ $labels.instance }} is down
+       description: Redis Shard instance {{ $labels.cluster }} is down
    - alert: Master Shard Down
      expr: floor(redis_master_link_status{role="slave"}) < 1
      for: 2m
@@ -274,7 +279,7 @@ groups:
      labels:
        severity: notification
      annotations:
-       summary: Redis Shard instance is down
+       summary: Shard CPU Usage
        description: "Busy Shard - Cluster: {{ $labels.cluster }} Shard: {{$labels.redis}} Node: {{$labels.node}} CPU: {{$value}}%"
        runbook: https://github.com/Redislabs-Solution-Architects/RedisEnterprisePrometheus/blob/master/runbooks/shards.md#shard-cpu-usage-is-excessive
    - alert: Hot Master Shard
@@ -283,7 +288,7 @@ groups:
      labels:
        severity: critical
      annotations:
-       summary: Redis Shard instance is down
+       summary: Hot Master Shard
        description: "Hot Shard - Cluster: {{ $labels.cluster }} Shard: {{$labels.redis}} Node: {{$labels.node}} CPU: {{$value}}%"
        runbook: https://github.com/Redislabs-Solution-Architects/RedisEnterprisePrometheus/blob/master/runbooks/shards.md#hot-master-shard
 #  - alert: ShardConnectionCount

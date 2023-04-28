@@ -4,17 +4,17 @@
 rule_files:
   - ../rules/alerts.yml
 
-evaluation_interval: 1m
+evaluation_interval: 30S
 
 tests:
   # Test 1.
-  - interval: 1m
+  - interval: 30s
     # Series data.
     input_series:
-      - series: 'bdb_read_hits{job="redis", instance="localhost:6379"}'
-        values: '100 50 10 10 10 10 10 10 10 10 10 25 50 100 200'
-      - series: 'bdb_read_misses{job="redis", instance="localhost:6379"}'
-        values: '10 50 100 100 100 100 100 200 200 200 200 100 100 100 50'
+      - series: 'bdb_read_hits{job="redis", cluster="localhost"}'
+        values: '1 2 3 2 3 2 3 4 3 2 3 2 1 1 3'
+      - series: 'bdb_read_misses{job="redis", cluster="localhost"}'
+        values: '10 20 10 20 10 10 10 20 20 20 20 10 10 10 5'
 
     # Unit test for alerting rules.
     alert_rule_test:
@@ -25,8 +25,8 @@ tests:
           # Alert 1.
           - exp_labels:
               severity: notification
-              instance: localhost:6379
               job: redis            
+              cluster: localhost
             exp_annotations:
               summary: Low Hit Ratio
               description: "Low Hit Ratio: {{ $labels.cluster }} DB: {{$labels.bdb}} Hit Ratio: {{$value}}%"

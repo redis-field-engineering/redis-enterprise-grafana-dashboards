@@ -23,8 +23,8 @@ tests:
           # Alert 1.
           - exp_labels:
               severity: critical
-              instance: localhost:6379
               job: redis            
             exp_annotations:
               summary: Node Not Responding
-              description: "Node Down - Cluster: {{ $labels.cluster }} Expected Nodes: 3 Actual: {{$value}}"
+              description: "Node Down - Cluster:  Expected Nodes: 3 Actual: 1"
+              runbook: https://github.com/Redislabs-Solution-Architects/RedisEnterprisePrometheus/blob/master/runbooks/nodes.md#node-not-responding

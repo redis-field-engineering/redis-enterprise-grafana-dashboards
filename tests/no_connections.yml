@@ -11,7 +11,7 @@ tests:
   - interval: 1m
     # Series data.
     input_series:
-      - series: 'bdb_conns{job="redis", instance="localhost:6379"}'
+      - series: 'bdb_conns{job="redis", cluster="localhost", bdb="1"}'
         values: '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0'
 
 
@@ -19,14 +19,15 @@ tests:
     alert_rule_test:
       # Unit test 1.
       - eval_time: 1m
-        alertname: Excessive Connections
+        alertname: No Redis Connections
         exp_alerts:
           # Alert 1.
           - exp_labels:
               severity: notification
-              instance: localhost:6379
               job: redis            
+              cluster: localhost
+              bdb: 1            
             exp_annotations:
-              Summary: "No cluster connections"
-              description: "No Connections - Cluster: {{ $labels.cluster }} DB: {{$labels.bdb}} Connections: {{$value}}"
-
+              summary: "No Redis Connections"
+              description: "No Connections - Cluster: localhost DB: 1 Connections: 0"
+              runbook: https://github.com/Redislabs-Solution-Architects/RedisEnterprisePrometheus/blob/master/runbooks/connections.md#no-redis-connections
