@@ -1,0 +1,32 @@
+# This is the main input for unit testing.
+# Only this file is passed as command line argument.
+
+rule_files:
+  - ../rules/alerts.yml
+
+evaluation_interval: 1m
+
+tests:
+  # Test 1.
+  - interval: 1m
+    # Series data.
+    input_series:
+      - series: 'node_available_memory{job="redis", instance="localhost:6379"}'
+        values: '100 75 50 25 10 10 10 10 10 10 10 10 25 50 75'
+      - series: 'node_free_memory{job="redis", instance="localhost:6379"}'
+        values: '100 75 50 25 10 10 10 10 10 10 10 10 25 50 75'
+
+    # Unit test for alerting rules.
+    alert_rule_test:
+      # Unit test 1.
+      - eval_time: 2m
+        alertname: Node Free Memory
+        exp_alerts:
+          # Alert 1.
+          - exp_labels:
+              severity: critical
+              instance: localhost:6379
+              job: redis            
+            exp_annotations:
+              summary:  Node Free Memory
+              description: "Low on Memory - Cluster: {{ $labels.cluster }} Memory Free: {{$value}}%"

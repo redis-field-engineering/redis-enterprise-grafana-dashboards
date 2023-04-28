@@ -11,20 +11,20 @@ tests:
   - interval: 1m
     # Series data.
     input_series:
-      - series: 'redis_up{job="redis", instance="localhost:6379"}'
-        values: '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0'
+      - series: 'bdb_conns{job="redis", instance="localhost:6379"}'
+        values: '64000 65000 65000 65000 65000 65000 65000 65000 65000 65000 65000 65000 65000 65000 64000'
 
     # Unit test for alerting rules.
     alert_rule_test:
       # Unit test 1.
       - eval_time: 1m
-        alertname: InstanceDown
+        alertname: Excessive Connections
         exp_alerts:
           # Alert 1.
           - exp_labels:
-              severity: page
+              severity: critical
               instance: localhost:6379
               job: redis            
             exp_annotations:
-              summary: Redis instance is down
-              description: Redis instance localhost:6379 is down
+              summary: "Too many connections"
+              description: "Too Many Connections - Cluster: {{ $labels.cluster }} DB: {{$labels.bdb}} Connections: {{$value}}"

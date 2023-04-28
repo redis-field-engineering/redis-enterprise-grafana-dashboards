@@ -1,0 +1,30 @@
+# This is the main input for unit testing.
+# Only this file is passed as command line argument.
+
+rule_files:
+  - ../rules/alerts.yml
+
+evaluation_interval: 1m
+
+tests:
+  # Test 1.
+  - interval: 1m
+    # Series data.
+    input_series:
+      - series: 'redis_up{job="redis", instance="localhost:6379"}'
+        values: '0.003 0.004 0.005 0.006 0.007 0.008 0.009 0.008 0.007 0.006 0.005 0.004 0.003 0.003 0.002'
+
+    # Unit test for alerting rules.
+    alert_rule_test:
+      # Unit test 1.
+      - eval_time: 1m
+        alertname: InstanceDown
+        exp_alerts:
+          # Alert 1.
+          - exp_labels:
+              severity: critical
+              instance: localhost:6379
+              job: redis            
+            exp_annotations:
+              summary: Redis instance is down
+              description: Redis instance localhost:6379 is down

@@ -1,0 +1,32 @@
+# This is the main input for unit testing.
+# Only this file is passed as command line argument.
+
+rule_files:
+  - ../rules/alerts.yml
+
+evaluation_interval: 1m
+
+tests:
+  # Test 1.
+  - interval: 1m
+    # Series data.
+    input_series:
+      - series: 'bdb_read_hits{job="redis", instance="localhost:6379"}'
+        values: '100 50 10 10 10 10 10 10 10 10 10 25 50 100 200'
+      - series: 'bdb_read_misses{job="redis", instance="localhost:6379"}'
+        values: '10 50 100 100 100 100 100 200 200 200 200 100 100 100 50'
+
+    # Unit test for alerting rules.
+    alert_rule_test:
+      # Unit test 1.
+      - eval_time: 1m
+        alertname: InstanceDown
+        exp_alerts:
+          # Alert 1.
+          - exp_labels:
+              severity: notification
+              instance: localhost:6379
+              job: redis            
+            exp_annotations:
+              summary: Low Hit Ratio
+              description: "Low Hit Ratio: {{ $labels.cluster }} DB: {{$labels.bdb}} Hit Ratio: {{$value}}%"

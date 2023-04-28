@@ -11,20 +11,20 @@ tests:
   - interval: 1m
     # Series data.
     input_series:
-      - series: 'redis_connected_clients{job="redis", instance="localhost:6379"}'
-        values: '420 480 520 540 560 580 600 520 480 520 460 440 380 400 500'
+      - series: 'redis_up{job="redis", instance="localhost:6379"}'
+        values: '0.0008 0.0009 0.001 0.001 0.002 0.003 0.004 0.005 0.004 0.003 0.002 0.001 0.001 0.0009 0.0009'
 
     # Unit test for alerting rules.
     alert_rule_test:
       # Unit test 1.
-      - eval_time: 7m
-        alertname: ShardConnectionCount
+      - eval_time: 1m
+        alertname: InstanceDown
         exp_alerts:
           # Alert 1.
           - exp_labels:
-              severity: warning
+              severity: notification
               instance: localhost:6379
-              job: redis
+              job: redis            
             exp_annotations:
-              summary: "Shards - Excessive Connection Count"
-              description: Shard localhost:6379 exceeded 500 connections for 5 minutes
+              summary: Redis instance is down
+              description: Redis instance localhost:6379 is down
