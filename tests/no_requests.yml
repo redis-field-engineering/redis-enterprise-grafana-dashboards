@@ -11,20 +11,21 @@ tests:
   - interval: 1m
     # Series data.
     input_series:
-      - series: 'redis_up{job="redis", instance="localhost:6379"}'
+      - series: 'bdb_total_req{job="redis", instance="localhost:6379"}'
         values: '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0'
 
     # Unit test for alerting rules.
     alert_rule_test:
       # Unit test 1.
       - eval_time: 1m
-        alertname: InstanceDown
+        alertname: No Redis Requests
         exp_alerts:
           # Alert 1.
           - exp_labels:
-              severity: page
+              severity: critical
               instance: localhost:6379
               job: redis            
             exp_annotations:
-              summary: Redis instance is down
-              description: Redis instance localhost:6379 is down
+              summary: No Redis Requests
+              description: "Too few Redis operations - Cluster:  DB:   0 (ops/sec)"
+              runbook: https://github.com/Redislabs-Solution-Architects/RedisEnterprisePrometheus/blob/master/runbooks/throughput.md#no-redis-requests

@@ -11,18 +11,21 @@ tests:
   - interval: 1m
     # Series data.
     input_series:
-      - series: 'redis_cluster_state{job="redis", instance="localhost:6379"}'
+      - series: 'redis_master_link_status{job="redis", role="slave", cluster="localhost"}'
         values: '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0'
 
     # Unit test for alerting rules.
     alert_rule_test:
       # Unit test 1.
       - eval_time: 1m
-        alertname: ClusterDown
+        alertname: Master Shard Down
         exp_alerts:
           # Alert 1.
           - exp_labels:
-              severity: page
+              severity: notification
+              job: redis            
+              cluster: localhost
+              role: slave            
             exp_annotations:
-              summary: Redis cluster is down
-              description: Redis cluster state is 0
+              summary: Master Shard Down
+              description: "Slave has no master - Cluster: {{ $labels.cluster }} Shard: {{$labels.redis}} Node: {{$labels.node}}"
